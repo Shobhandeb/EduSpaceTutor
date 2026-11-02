@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login | EDU SPACE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css"> <!-- New Auth CSS -->
+</head>
+<body class="auth-body">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <i data-lucide="hexagon" class="brand-icon"></i>
+                <span class="brand-text">EDU <span class="text-glow-cyan">SPACE</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="glass-panel auth-box">
+            <div class="text-center mb-2">
+                <h2 class="auth-title">Welcome <span class="text-glow-blue">Back</span></h2>
+                <p class="text-muted">Login to access your student dashboard.</p>
+            </div>
+
+            <form id="loginForm" class="contact-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" required placeholder="student@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="loginPassword" class="form-control" required placeholder="••••••••">
+                        <button type="button" class="toggle-password"><i data-lucide="eye"></i></button>
+                    </div>
+                </div>
+
+                <div class="auth-options">
+                    <a href="#" id="forgotPasswordLink" class="text-cyan">Forgot Password?</a>
+                </div>
+
+                <p id="authError" class="auth-error-msg"></p>
+
+                <button type="submit" id="loginBtn" class="btn btn-primary btn-full mt-2">
+                    <i data-lucide="log-in"></i> Login to Dashboard
+                </button>
+            </form>
+
+            <div class="auth-footer text-center mt-2">
+                <p class="text-muted">Don't have an account? <a href="register.html" class="text-cyan">Register Here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notice type="module"! This is required for Firebase -->
+    <script type="module" src="../js/auth.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

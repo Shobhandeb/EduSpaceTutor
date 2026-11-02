@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030712">
+    <title>Courses | EDU SPACE</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <i data-lucide="hexagon" class="brand-icon"></i>
+                <span class="brand-text">EDU <span class="text-glow-cyan">SPACE</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="courses.html" class="nav-link active">Courses</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-primary">
+                    <i data-lucide="user"></i> Student Login
+                </a>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <!-- COURSES HERO SECTION -->
+        <header class="page-header">
+            <div class="page-header-glow" style="background: var(--primary-cyan);"></div>
+            <div class="section-container text-center">
+                <h1 class="section-title">Premium <span class="text-glow-cyan">Curriculum</span></h1>
+                <p class="section-subtitle">Structured, syllabus-aligned courses for board exams and competitive foundations.</p>
+                
+                <!-- Category Filter Buttons -->
+                <div class="course-filters mt-2">
+                    <button class="filter-btn active">All Subjects</button>
+                    <button class="filter-btn">Mathematics</button>
+                    <button class="filter-btn">Computer Science</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- COURSES GRID -->
+        <section class="section">
+            <div class="section-container">
+                <div class="grid-2">
+                    
+                    <!-- MATH COURSE 1 -->
+                    <div class="glass-panel course-card">
+                        <div class="course-badge math-badge">Mathematics</div>
+                        <h2 class="course-title">Class 11 & 12 Mathematics</h2>
+                        <p class="course-desc">Comprehensive coverage of the Senior Secondary syllabus, focusing on Calculus, Algebra, and Probability.</p>
+                        
+                        <div class="course-features">
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Board Exam Focused (CBSE/ICSE/State)</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> JEE Foundation Level</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Weekly Mock Tests</div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i data-lucide="users"></i> Offline & Online</span>
+                            <span><i data-lucide="clock"></i> 2 Days/Week</span>
+                        </div>
+                        
+                        <a href="contact.html?subject=Math11-12" class="btn btn-outline btn-full">Enquire Now</a>
+                    </div>
+
+                    <!-- CS COURSE 1 -->
+                    <div class="glass-panel course-card">
+                        <div class="course-badge cs-badge">Computer Science</div>
+                        <h2 class="course-title">Class 11 & 12 Computer Science</h2>
+                        <p class="course-desc">Master Python/Java/C++, Data Structures, Boolean Algebra, and Database Concepts for board excellence.</p>
+                        
+                        <div class="course-features">
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Practical Coding Sessions</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Project Assistance</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Logic Building</div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i data-lucide="users"></i> Offline & Online</span>
+                            <span><i data-lucide="clock"></i> 2 Days/Week</span>
+                        </div>
+                        
+                        <a href="contact.html?subject=CS11-12" class="btn btn-outline btn-full">Enquire Now</a>
+                    </div>
+
+                    <!-- MATH COURSE 2 -->
+                    <div class="glass-panel course-card">
+                        <div class="course-badge math-badge">Mathematics</div>
+                        <h2 class="course-title">Class 9 & 10 Mathematics</h2>
+                        <p class="course-desc">Building an unbreakable mathematical foundation. Focus on Geometry, Trigonometry, and Mensuration.</p>
+                        
+                        <div class="course-features">
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Concept Simplification</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Board Exam Strategies</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Doubt Clearing Sessions</div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i data-lucide="users"></i> Offline Only</span>
+                            <span><i data-lucide="clock"></i> 3 Days/Week</span>
+                        </div>
+                        
+                        <a href="contact.html?subject=Math9-10" class="btn btn-outline btn-full">Enquire Now</a>
+                    </div>
+
+                    <!-- CS COURSE 2 -->
+                    <div class="glass-panel course-card">
+                        <div class="course-badge cs-badge">Computer Science</div>
+                        <h2 class="course-title">Programming Foundation (Class 6-8)</h2>
+                        <p class="course-desc">Early introduction to logical thinking and block-based/basic text programming to spark interest in tech.</p>
+                        
+                        <div class="course-features">
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Scratch & Basic Python</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> Fun Mini-Projects</div>
+                            <div class="c-feature"><i data-lucide="check-circle"></i> No prior experience needed</div>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i data-lucide="users"></i> Online Only</span>
+                            <span><i data-lucide="clock"></i> 1 Day/Week</span>
+                        </div>
+                        
+                        <a href="contact.html?subject=CS-Foundation" class="btn btn-outline btn-full">Enquire Now</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <a href="../index.html" class="nav-brand">
+                            <i data-lucide="hexagon" class="brand-icon"></i>
+                            <span class="brand-text">EDU <span class="text-glow-cyan">SPACE</span></span>
+                        </a>
+                        <p class="footer-description">Premium private tutoring shaping the technologists and mathematicians of tomorrow.</p>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title">Explore</h4>
+                        <ul class="footer-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="about.html">About Tutor</a></li>
+                            <li><a href="courses.html">Courses</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-title">Contact</h4>
+                        <ul class="footer-links">
+                            <li><i data-lucide="mail" class="footer-icon"></i> sdadak02@gmail.com</li>
+                            <li><i data-lucide="phone" class="footer-icon"></i> +91 82403 77262</li>
+                            <li><i data-lucide="map-pin" class="footer-icon"></i> Maskalaibari, West Bengal</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 EDU SPACE. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Core JavaScript -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Scroll Progress & Navbar interaction script matching index page
+        (() => {
+            const navbar = document.querySelector('.navbar');
+            const progress = document.querySelector('.scroll-progress');
+            const updateScrollUI = () => {
+                const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+                const progressValue = scrollable > 0 ? window.scrollY / scrollable : 0;
+                if (progress) progress.style.transform = `scaleX(${Math.min(1, Math.max(0, progressValue))})`;
+                if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 24);
+            };
+            window.addEventListener('scroll', updateScrollUI, { passive: true });
+            updateScrollUI();
+
+            const menuButton = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuButton && navLinks) {
+                menuButton.setAttribute('aria-expanded', 'false');
+                menuButton.addEventListener('click', () => {
+                    const isOpen = navLinks.classList.toggle('is-open');
+                    menuButton.setAttribute('aria-expanded', String(isOpen));
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('is-open');
+                        menuButton.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        })();
+    </script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* =========================================================
+   EDU SPACE — ABOUT PAGE RESPONSIVE REFINEMENT
+   Load after style.css, responsive.css and about-advanced.css
+   ========================================================= */
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body.about-cinematic { overflow-x: clip; }
+img, canvas, video { max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { touch-action: manipulation; }
+.cinematic-section { min-width: 0; }
+.section-container { width: min(100% - 3rem, 1280px); margin-inline: auto; }
+
+/* Navigation */
+.navbar { width: 100%; }
+.nav-container { width: min(100% - 2rem, 1280px); margin-inline: auto; }
+.nav-links { display: flex; align-items: center; gap: clamp(.75rem, 2vw, 1.6rem); }
+.nav-actions .btn { white-space: nowrap; }
+
+/* Hero */
+.hero-cinematic-container {
+    width: min(100% - 3rem, 1280px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+    align-items: center;
+    gap: clamp(2rem, 6vw, 6rem);
+}
+.hero-text-content, .profile-tilt-wrapper { min-width: 0; }
+.profile-tilt-wrapper { width: min(100%, 460px); margin-inline: auto; }
+.profile-card { width: 100%; }
+.hero-glitch-text { overflow-wrap: anywhere; }
+.hero-subline { max-width: 60ch; }
+
+/* Timeline, cards and grids */
+.timeline-advanced { width: 100%; }
+.timeline-card, .career-card, .bento-item, .skill-category-card { min-width: 0; }
+.career-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .9fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+.skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.bento-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.gallery-item { min-width: 0; overflow: hidden; }
+.gallery-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 3D scenes and HUD */
+#scene-3d-environments, #scene-sports-car { width: 100%; max-width: 100%; }
+#canvas-container, #car-canvas-container { overflow: hidden; }
+#canvas-container canvas, #car-canvas-container canvas {
+    display: block; width: 100%; height: 100%; max-width: 100%;
+}
+.game-ui-layer { box-sizing: border-box; }
+.game-controls, .car-hud-container { gap: 1rem; }
+.game-controls > *, .car-hud-container > * { min-width: 0; }
+#train-story-container { max-width: min(90vw, 760px); margin-inline: auto; text-align: center; }
+#speedometer, #car-speedometer, #car-gear { font-variant-numeric: tabular-nums; }
+#btn-train-start, #btn-cam, #btn-car-start, #btn-car-cam, #btn-car-boost {
+    min-height: 44px;
+}
+
+/* Lightbox */
+.lightbox { box-sizing: border-box; padding: 1rem; }
+.lightbox-content { max-width: min(100%, 1100px); max-height: 90dvh; }
+#lightboxImg { display: block; max-width: 100%; max-height: 78dvh; object-fit: contain; }
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .hero-cinematic-container { grid-template-columns: minmax(0, 1fr) minmax(240px, .8fr); }
+    .career-grid { grid-template-columns: 1fr; }
+    .career-visuals { min-height: 180px; }
+    .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .game-ui-layer { padding: 88px 1.25rem 1.5rem !important; }
+    .game-controls, .car-hud-container { align-items: center !important; }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+    html { scroll-padding-top: 72px; }
+    .navbar { position: relative; }
+    .nav-container {
+        width: calc(100% - 1.25rem);
+        min-height: 64px;
+        flex-wrap: wrap;
+        gap: .65rem;
+        padding-block: .65rem;
+    }
+    .nav-brand { flex: 1 1 auto; }
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: .45rem 1rem;
+        padding: .45rem 0 .2rem;
+    }
+    .nav-link { font-size: .88rem; }
+    .nav-actions .btn { padding: .65rem .8rem; font-size: .8rem; }
+
+    #cinematic-intro-overlay { padding: 1.25rem; box-sizing: border-box; }
+    #intro-content { width: 100%; padding-inline: .25rem; }
+    #intro-name { font-size: clamp(2.2rem, 10vw, 4rem) !important; line-height: 1.05; letter-spacing: .04em !important; }
+    #intro-sub { font-size: 1rem !important; margin-bottom: 2rem !important; }
+    #intro-buttons { gap: .75rem !important; }
+    #intro-buttons button { justify-content: center; width: min(100%, 280px); padding: .85rem 1rem !important; font-size: .95rem !important; }
+    #system-activation-text { font-size: .85rem !important; margin-top: 1.5rem !important; }
+
+    .hero-cinematic-container {
+        width: calc(100% - 2rem);
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+        padding-block: 5.5rem 4rem;
+    }
+    .hero-text-content { order: 1; }
+    .profile-tilt-wrapper { order: 2; width: min(78vw, 340px); }
+    #heroHeadline, #heroHeadline2 { font-size: clamp(2rem, 9vw, 3.2rem); line-height: 1.08; }
+    .hero-subline { margin-inline: auto; font-size: 1rem; }
+    .hero-action-group { justify-content: center; }
+    .scroll-indicator { display: none; }
+
+    .section-container { width: calc(100% - 2rem) !important; padding-inline: 0 !important; }
+    .cinematic-section { padding-block: 4rem !important; }
+    .cinematic-section h2.hero-glitch-text { font-size: clamp(1.65rem, 7vw, 2.35rem) !important; line-height: 1.15; }
+    .cinematic-section .text-center { margin-bottom: 2.25rem !important; }
+    .cinematic-section .text-center p { font-size: .98rem !important; }
+
+    .timeline-advanced { padding-left: 1.25rem; }
+    .timeline-line { left: 0 !important; }
+    .timeline-node, .left-node, .right-node {
+        width: 100% !important;
+        left: auto !important;
+        right: auto !important;
+        margin: 0 0 1.5rem !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+    .node-marker { left: -1.25rem !important; right: auto !important; }
+    .timeline-card { width: 100%; padding: 1.25rem !important; }
+    .timeline-title { font-size: 1.15rem !important; }
+    .timeline-subtitle { font-size: .9rem; }
+
+    #scene-sports-car { min-height: 680px !important; }
+    #scene-3d-environments { min-height: 650px !important; }
+    .game-ui-layer {
+        height: auto !important;
+        min-height: 650px;
+        padding: 88px .85rem 1.25rem !important;
+        gap: 1rem;
+    }
+    .game-ui-layer > .text-center h2 { font-size: clamp(1.45rem, 6vw, 2rem) !important; }
+    .game-ui-layer > .text-center p { font-size: .85rem !important; max-width: 95%; }
+    .game-controls, .car-hud-container {
+        flex-direction: column;
+        align-items: stretch !important;
+        justify-content: flex-end !important;
+        gap: .8rem !important;
+    }
+    .game-controls .holo-card, .car-hud-container .holo-card {
+        width: 100%;
+        padding: .8rem 1rem !important;
+    }
+    #speedometer, #car-speedometer { font-size: 1.55rem !important; }
+    #car-gear { font-size: 1.1rem !important; }
+    .game-controls > div:last-child, .car-hud-container > div:last-child {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .55rem !important;
+        width: 100%;
+    }
+    .game-controls button, .car-hud-container button {
+        justify-content: center;
+        padding: .75rem .55rem !important;
+        font-size: .78rem;
+        white-space: normal;
+    }
+    #btn-train-start, #btn-car-start { grid-column: 1 / -1; }
+
+    .career-card { padding: 1.25rem !important; }
+    .career-info h3 { font-size: 1.65rem !important; }
+    .workflow-diagram { transform: scale(.85); transform-origin: center; }
+    .skills-grid, .bento-grid { grid-template-columns: 1fr; }
+    .bento-content { padding: 1.25rem; }
+    .bento-wide .bento-content { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+    .bento-icon-large { display: none !important; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item, .gallery-wide, .gallery-tall { grid-column: auto !important; grid-row: auto !important; min-height: 220px; }
+    .footer { padding: 2.5rem 1rem !important; }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+    .nav-actions .btn { font-size: .72rem; }
+    .nav-brand .brand-text { font-size: .95rem; }
+    .nav-links { gap: .35rem .75rem; }
+    #intro-name { font-size: clamp(1.9rem, 9vw, 2.7rem) !important; }
+    .profile-tilt-wrapper { width: min(82vw, 300px); }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tech-tags span { font-size: .72rem; }
+    .game-ui-layer { padding-inline: .65rem !important; }
+}
+
+/* Accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

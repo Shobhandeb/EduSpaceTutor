@@ -1,0 +1,1238 @@
+/* =========================================================
+   EDU SPACE - ADVANCED CINEMATIC PORTFOLIO STYLES
+   Specific to the About Page (Scoped to .about-cinematic)
+   ========================================================= */
+
+   /* =========================================================
+   PHASE 2: CINEMATIC DESIGN FOUNDATION
+   ========================================================= */
+:root {
+    --cinematic-bg-main: #030712; /* Deep space black */
+    --cinematic-bg-sec: #07111F;  /* Midnight navy */
+    --card-glass: rgba(15, 25, 45, 0.72);
+    --cyan-glow: #00E5FF; /* Electric cyan */
+    --blue-electric: #0066FF; /* Neon blue */
+    --violet-neon: #8B5CF6; /* Violet */
+    --text-main: #F3F4F6; /* Soft white */
+    --text-muted: #94A3B8; /* Subtle silver */
+    --ease-cinematic: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Prevent scrolling while intro is playing */
+body.intro-active {
+    overflow: hidden !important;
+}
+
+#btn-explore-world:hover {
+    background: rgba(0, 229, 255, 0.3) !important;
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.6) !important;
+    transform: scale(1.05);
+}
+
+#btn-quick-explore:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.05);
+}
+:root {
+    --cinematic-bg-main: #030712;
+    --cinematic-bg-sec: #07111F;
+    --card-glass: rgba(15, 25, 45, 0.72);
+    --cyan-glow: #00E5FF;
+    --blue-electric: #0066FF;
+    --violet-neon: #8B5CF6;
+    --ease-cinematic: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* --- Advanced Background with Grid & Noise --- */
+body.about-cinematic {
+    background-color: var(--cinematic-bg-main);
+    color: #F3F4F6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body.about-cinematic::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -2;
+    /* Deep space gradient */
+    background: radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.15), transparent 60%),
+                radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.1), transparent 50%);
+}
+
+body.about-cinematic::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    /* Futuristic Grid Overlay */
+    background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+    pointer-events: none;
+}
+
+/* --- Holographic Card Design System --- */
+.holo-card {
+    background: var(--card-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 229, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.6s var(--ease-cinematic), box-shadow 0.6s var(--ease-cinematic);
+}
+
+/* Animated Glowing Border Effect */
+.holo-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
+}
+
+.holo-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 102, 255, 0.2);
+    border-color: rgba(0, 229, 255, 0.4);
+}
+
+.holo-card:hover::before {
+    left: 200%;
+}
+
+/* --- Typography Utilities --- */
+.text-gradient-cyan {
+    background: linear-gradient(135deg, #00E5FF, #0066FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-gradient-violet {
+    background: linear-gradient(135deg, #8B5CF6, #00E5FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* =========================================
+   PHASE 3: HERO & HOLOGRAPHIC PROFILE
+   ========================================= */
+.cinematic-section {
+    min-height: 100vh;
+    position: relative;
+    padding-top: 100px; /* Accounts for navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-cinematic-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.sys-status {
+    font-family: monospace;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-glitch-text {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    perspective: 1000px;
+}
+
+/* GSAP Character splitting class + Gradient Text Bug Fix */
+.char {
+    display: inline-block;
+    /* This forces the browser to render the opacity correctly inside a gradient text parent */
+    position: relative;
+    will-change: transform, opacity;
+}
+
+.hero-subline {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    border-left: 3px solid var(--primary-cyan);
+    padding-left: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+/* --- 3D Magnetic Card System --- */
+.profile-tilt-wrapper {
+    perspective: 1200px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 50;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 400px;
+    height: 550px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease, width 0.6s var(--ease-cinematic), height 0.6s var(--ease-cinematic);
+}
+
+.profile-image-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: translateZ(30px);
+    transition: all 0.6s var(--ease-cinematic);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: contrast(1.1) grayscale(20%);
+    transition: filter 0.5s ease;
+}
+
+.profile-card:hover .profile-img {
+    filter: contrast(1.1) grayscale(0%);
+}
+
+/* --- Holographic Energy Rings --- */
+.holo-aura {
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.4), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    mix-blend-mode: screen;
+}
+
+.energy-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+    width: 150%; padding-bottom: 150%; 
+    border: 2px dashed rgba(0, 229, 255, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    animation: spinRing 20s linear infinite;
+}
+
+@keyframes spinRing {
+    to { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+/* --- Expanded Hologram State (Clicked) --- */
+.profile-card.is-expanded {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotateX(0) rotateY(0) !important;
+    width: 90vw;
+    max-width: 800px;
+    height: 80vh;
+    max-height: 600px;
+    z-index: 9999;
+    box-shadow: 0 0 100px rgba(0, 229, 255, 0.3), 0 50px 100px rgba(0,0,0,0.8);
+    cursor: default;
+    display: flex;
+}
+
+.profile-card.is-expanded .profile-image-container {
+    width: 40%;
+    position: relative;
+    border-radius: 20px 0 0 20px;
+    transform: translateZ(0); 
+}
+
+.profile-card.is-expanded .holo-aura { opacity: 1; }
+.profile-card.is-expanded .energy-ring { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+
+.profile-info-panel {
+    width: 60%;
+    padding: 3rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(20px);
+    transition: all 0.6s var(--ease-cinematic);
+    transition-delay: 0.3s; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-card.is-expanded .profile-info-panel {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tags span {
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    color: var(--primary-cyan);
+}
+
+#hologramOverlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(3, 7, 18, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+#hologramOverlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.7;
+}
+
+.mouse-outline {
+    width: 26px; height: 40px;
+    border: 2px solid var(--text-muted);
+    border-radius: 20px;
+    position: relative;
+}
+
+.mouse-wheel {
+    width: 4px; height: 8px;
+    background: var(--primary-cyan);
+    border-radius: 4px;
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s infinite;
+}
+
+@keyframes scrollWheel {
+    0% { top: 6px; opacity: 1; }
+    100% { top: 20px; opacity: 0; }
+}
+
+/* =========================================
+   PHASE 4: ACADEMIC TIMELINE
+   ========================================= */
+.timeline-advanced {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    /* Prevents line from extending too far down */
+    padding-bottom: 4rem; 
+}
+
+/* Central Line */
+.timeline-line {
+    position: absolute;
+    top: 2rem; /* Starts precisely at the first node */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px; 
+    height: calc(100% - 6rem); /* Stops right at the last node */
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 1;
+}
+
+.timeline-progress {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 0%; 
+    background: linear-gradient(to bottom, var(--cyan-glow), var(--violet-neon));
+    box-shadow: 0 0 15px var(--cyan-glow);
+}
+
+/* Timeline Nodes */
+.timeline-node {
+    position: relative;
+    width: 50%;
+    padding: 2rem 0;
+    z-index: 2;
+    opacity: 0; 
+}
+
+.left-node {
+    left: 0;
+    padding-right: 4rem;
+}
+
+.right-node {
+    left: 50%;
+    padding-left: 4rem;
+}
+
+/* Glowing Markers */
+.node-marker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px; height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-node .node-marker { right: -12px; }
+.right-node .node-marker { left: -12px; }
+
+.marker-core {
+    width: 14px; height: 14px;
+    background: var(--cinematic-bg-main);
+    border: 3px solid var(--cyan-glow);
+    border-radius: 50%;
+    z-index: 3;
+    transition: background 0.3s ease;
+}
+
+.timeline-node:hover .marker-core {
+    background: var(--cyan-glow);
+}
+.timeline-node.right-node:hover .marker-core {
+    background: var(--violet-neon);
+}
+
+.marker-pulse {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: var(--cyan-glow);
+    border-radius: 50%;
+    z-index: 2;
+    opacity: 0.5;
+    animation: pulseMarker 2.5s infinite;
+}
+
+@keyframes pulseMarker {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Timeline Cards */
+.timeline-card {
+    padding: 2.5rem;
+}
+
+.card-glow-accent {
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--cyan-glow);
+    box-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+}
+
+/* Mobile Responsive Timeline */
+@media (max-width: 992px) {
+    .timeline-line { left: 30px; height: calc(100% - 4rem); }
+    .timeline-node { width: 100%; left: 0 !important; padding: 2rem 0 2rem 70px !important; }
+    .left-node { padding-right: 0; }
+    .right-node { padding-left: 70px; }
+    .left-node .node-marker, .right-node .node-marker { left: 18px !important; right: auto !important; }
+}
+
+/* =========================================
+   PHASE 5: 3D TRAIN ENVIRONMENT UI
+   ========================================= */
+.game-ui-layer {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.game-ui-layer.is-visible {
+    opacity: 1;
+}
+
+.game-controls button {
+    backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
+
+/* =========================================
+   PHASE 7: PROFESSIONAL EXPERIENCE
+   ========================================= */
+.career-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.project-box {
+    background: rgba(0, 229, 255, 0.03);
+    border: 1px solid rgba(0, 229, 255, 0.15);
+    padding: 1.5rem;
+    border-radius: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-box:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 229, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.05);
+}
+
+/* Architecture Workflow Diagram */
+.workflow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(3, 7, 18, 0.5);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.workflow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--cinematic-bg-sec);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.core-icon {
+    border-color: var(--violet-neon);
+    color: var(--violet-neon);
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.workflow-step:hover .step-icon {
+    color: var(--primary-cyan);
+    border-color: var(--primary-cyan);
+    transform: scale(1.1);
+}
+
+.step-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animated Data Lines */
+.workflow-line {
+    flex-grow: 1;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 15px;
+    position: relative;
+    transform: translateY(-15px);
+    overflow: hidden;
+}
+
+.data-packet {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 20px;
+    height: 4px;
+    background: var(--cyan-glow);
+    box-shadow: 0 0 10px var(--cyan-glow), 0 0 20px var(--cyan-glow);
+    border-radius: 2px;
+    animation: flowData 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes flowData {
+    0% { left: -20px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@media (max-width: 992px) {
+    .career-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .workflow-diagram {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .workflow-line {
+        width: 2px;
+        height: 50px;
+        margin: 0;
+        transform: translateY(0);
+    }
+    .data-packet {
+        width: 4px;
+        height: 20px;
+        animation: flowDataVertical 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes flowDataVertical {
+        0% { top: -20px; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+    }
+}
+
+/* =========================================
+   PHASE 8: BEYOND THE CODE (BENTO GRID)
+   ========================================= */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    grid-auto-rows: minmax(220px, auto);
+}
+
+.bento-item {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.4s var(--ease-cinematic), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento-wide {
+    grid-column: span 3;
+}
+
+.bento-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.4s var(--ease-cinematic);
+}
+
+.text-violet { color: var(--violet-neon); }
+.text-cyan { color: var(--cyan-glow); }
+
+.bento-item:hover .bento-icon {
+    transform: scale(1.15) rotate(5deg) translateY(-5px);
+}
+
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-large {
+        grid-column: span 2;
+    }
+    .bento-wide {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    .bento-large, .bento-wide {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .bento-item .bento-content {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.5rem !important;
+    }
+    .bento-icon-large i {
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+
+/* =========================================
+   PHASE 9: VISUAL ARCHIVE & LIGHTBOX
+   ========================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 250px;
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    padding: 0; 
+    cursor: pointer;
+}
+
+.gallery-wide {
+    grid-column: span 2;
+}
+
+.gallery-tall {
+    grid-row: span 2;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-cinematic);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(3,7,18,0.9) 0%, rgba(3,7,18,0.4) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-overlay h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    transform: translateY(15px);
+    transition: transform 0.4s var(--ease-cinematic);
+}
+
+.gallery-overlay p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transform: translateY(15px);
+    transition: transform 0.4s var(--ease-cinematic);
+    transition-delay: 0.05s;
+}
+
+.zoom-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: #fff;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s var(--ease-cinematic);
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.08);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .gallery-overlay h3,
+.gallery-item:hover .gallery-overlay p {
+    transform: translateY(0);
+}
+
+.gallery-item:hover .zoom-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Fullscreen Lightbox --- */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(3, 7, 18, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    transform: scale(0.95);
+    transition: transform 0.5s var(--ease-cinematic);
+}
+
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(0, 229, 255, 0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.lightbox-caption {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(0, 229, 255, 0.2);
+    border-color: var(--primary-cyan);
+    color: var(--primary-cyan);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 992px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+    }
+    .gallery-wide, .gallery-tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .lightbox-close {
+        top: 1rem; right: 1rem;
+    }
+}
+
+/* =========================================
+   PHASES 10 & 11: ADVANCED MOTION & OPTIMIZATION
+   ========================================= */
+
+/* Floating Ambient Particles */
+.particle {
+    position: absolute;
+    background: var(--cyan-glow);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 0 8px var(--cyan-glow);
+    will-change: transform, opacity;
+}
+
+/* Phase 11: Performance Optimization Layer */
+.holo-card, .gallery-item {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, box-shadow;
+}
+
+/* Smooth out the overall scrolling experience */
+html {
+    scroll-behavior: smooth;
+}
+/* =========================================
+   BUG FIX: INVISIBLE 3D TEXT
+   ========================================= */
+/* WebKit browsers hide elements when 3D transforms (rotateX) are combined 
+   with background-clip: text. We replace the gradient with a solid glowing 
+   color to ensure the GSAP animation renders flawlessly. */
+   
+#heroHeadline {
+    background: none !important;
+    -webkit-text-fill-color: #8B5CF6 !important;
+    color: #8B5CF6 !important;
+    text-shadow: 0 0 25px rgba(139, 92, 246, 0.6) !important;
+}
+/* =========================================================
+   MASTER MOBILE RESPONSIVENESS (PHASE 11 FINAL POLISH)
+   ========================================================= */
+
+/* --- TABLET ADJUSTMENTS (Max 992px) --- */
+@media screen and (max-width: 992px) {
+    /* Hero Section */
+    .hero-cinematic-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+        padding-top: 2rem;
+    }
+    .hero-subline {
+        border-left: none;
+        padding-left: 0;
+    }
+    .hero-action-group {
+        justify-content: center;
+    }
+    
+    /* Grids to 2 Columns */
+    .bento-grid, .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-wide { grid-column: span 2; }
+    .gallery-wide { grid-column: span 2; }
+    
+    /* Career */
+    .career-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* --- MOBILE PHONE ADJUSTMENTS (Max 768px) --- */
+@media screen and (max-width: 768px) {
+    /* Global Section Adjustments */
+    .cinematic-section { padding: 4rem 0 !important; min-height: auto; }
+    #scene-hero { padding-top: 120px !important; }
+    .section-container { padding: 0 1.5rem !important; }
+    .hero-glitch-text { font-size: 2.2rem !important; }
+    
+    /* Hero Hologram Card */
+    .profile-card { height: 400px; max-width: 320px; }
+    .profile-card.is-expanded {
+        flex-direction: column;
+        width: 95vw;
+        height: 90vh;
+        overflow-y: auto;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+    }
+    .profile-card.is-expanded .profile-image-container {
+        width: 100%;
+        height: 40%;
+        border-radius: 20px 20px 0 0;
+        position: relative !important;
+    }
+    .profile-card.is-expanded .profile-info-panel {
+        width: 100%;
+        height: 60%;
+        padding: 1.5rem;
+        transform: translateY(0);
+    }
+
+    /* Timeline */
+    .timeline-advanced { padding-left: 10px; }
+    .timeline-line { left: 20px; height: calc(100% - 4rem); }
+    .timeline-node { width: 100%; left: 0 !important; padding: 1.5rem 0 1.5rem 50px !important; }
+    .left-node .node-marker, .right-node .node-marker { left: 8px !important; right: auto !important; }
+
+    /* 3D Train Game UI */
+    .game-ui-layer { padding: 100px 1rem 1rem 1rem !important; }
+    .game-controls { flex-direction: column; align-items: stretch !important; gap: 1rem; }
+    .game-controls > div { width: 100%; justify-content: center; }
+    .game-controls .holo-card { text-align: center; }
+
+    /* Career Workflow */
+    .workflow-diagram {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+    .workflow-line {
+        width: 2px;
+        height: 40px;
+        margin: 0;
+        transform: none;
+    }
+    .data-packet {
+        width: 4px;
+        height: 20px;
+        animation: flowDataVertical 3s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes flowDataVertical {
+        0% { top: -20px; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+    }
+
+    /* Bento & Gallery Grids to 1 Column */
+    .bento-grid, .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .bento-large, .bento-wide, .gallery-wide, .gallery-tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .bento-item { padding: 1.5rem; }
+    .bento-item .bento-content { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+    
+    .gallery-grid { grid-auto-rows: 220px; }
+    
+    /* Lightbox */
+    .lightbox-close { top: 1rem; right: 1rem; width: 40px; height: 40px; }
+    .lightbox-content img { max-height: 70vh; }
+    .lightbox-caption { font-size: 1rem; }
+}
+
+/* --- SMALL PHONES (Max 480px) --- */
+@media screen and (max-width: 480px) {
+    .hero-glitch-text { font-size: 1.8rem !important; }
+    .tech-tags span { font-size: 0.7rem; padding: 0.2rem 0.6rem; }
+    .timeline-title { font-size: 1.2rem !important; }
+    .timeline-card { padding: 1.5rem; }
+}
+/* =========================================
+   PERSISTENT JOURNEY TRAIN & INTRO CONTROLS
+   ========================================= */
+#persistent-train-progress {
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    height: 38px;
+    background: rgba(3, 7, 18, 0.9);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+    z-index: 999;
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1.5rem;
+}
+
+.train-track-line {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#persistent-train-icon {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    color: var(--cyan-glow);
+    filter: drop-shadow(0 0 6px var(--cyan-glow));
+    transition: left 0.1s ease-out;
+}
+
+.train-loco-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.train-stations {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+.station-node {
+    font-size: 0.65rem;
+    font-family: monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.station-node.active {
+    color: var(--cyan-glow);
+    font-weight: bold;
+    text-shadow: 0 0 8px var(--cyan-glow);
+}
+
+/* Floating Intro Controls */
+.cin-ctrl-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-family: monospace;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.cin-ctrl-btn:hover {
+    color: var(--cyan-glow);
+    transform: scale(1.05);
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+    #persistent-train-progress { display: none; }
+    .car-hud-container { flex-direction: column; align-items: stretch !important; gap: 1rem; }
+}
+/* =========================================
+   PHASE 8: TECHNICAL SKILLS MATRIX
+   ========================================= */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category-card {
+    padding: 2rem;
+    transition: transform 0.4s var(--ease-cinematic), box-shadow 0.4s ease;
+}
+
+.skill-category-card:hover {
+    transform: translateY(-8px);
+}
+
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.skill-card-header h3 {
+    font-size: 1.4rem;
+    font-family: var(--font-heading);
+    margin: 0;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.skill-node {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.cyan-node {
+    background: var(--cyan-glow);
+    color: var(--cyan-glow);
+}
+
+.violet-node {
+    background: var(--violet-neon);
+    color: var(--violet-neon);
+}

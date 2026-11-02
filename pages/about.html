@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shobhondeb Adak | Interactive Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Advanced Cinematic Styles -->
+    <link rel="stylesheet" href="../css/about-advanced.css">
+    <link rel="stylesheet" href="../css/about-responsive-fix.css">
+</head>
+<body class="about-cinematic intro-active">
+
+    <!-- PHASE 3: CINEMATIC INTRODUCTION OVERLAY -->
+    <div id="cinematic-intro-overlay" style="position: fixed; inset: 0; width: 100vw; height: 100vh; background-color: var(--cinematic-bg-main); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden;">
+        
+        <!-- Deep Space Background Elements -->
+        <div id="intro-stars" style="position: absolute; inset: 0; z-index: 1;"></div>
+        
+        <!-- Intro Content -->
+        <div id="intro-content" style="z-index: 10; position: relative;">
+            <!-- Floating Cinematic Control Panel -->
+            <!-- <div id="cinematic-controls" style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; align-items: center; background: rgba(15, 25, 45, 0.6); padding: 0.6rem 1.2rem; border-radius: 50px; border: 1px solid rgba(0, 229, 255, 0.2); backdrop-filter: blur(10px);">
+                <button id="cin-skip" class="cin-ctrl-btn" title="Skip Intro"><i data-lucide="skip-forward"></i> Skip</button>
+                <button id="cin-pause" class="cin-ctrl-btn" title="Pause / Resume"><i data-lucide="pause"></i></button>
+                <button id="cin-sound" class="cin-ctrl-btn" title="Sound Toggle"><i data-lucide="volume-x"></i></button>
+                <button id="cin-exit" class="cin-ctrl-btn" title="Exit Cinematic"><i data-lucide="x-circle"></i> Exit</button>
+            </div> -->
+            <h1 class="hero-glitch-text text-gradient-cyan" id="intro-name" style="font-size: clamp(3rem, 6vw, 6rem); letter-spacing: 2px; margin-bottom: 0.5rem;">SHOBHONDEB ADAK</h1>
+            <p class="text-muted" id="intro-sub" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 3rem auto;">
+                "Engineer in progress. Educator by passion. Explorer by curiosity."
+            </p>
+            
+            <div id="intro-buttons" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="btn-explore-world" style="background: rgba(0, 229, 255, 0.15); border: 1px solid var(--cyan-glow); color: var(--cyan-glow); padding: 1rem 2rem; border-radius: 50px; cursor: pointer; font-family: var(--font-heading); font-size: 1.1rem; box-shadow: 0 0 20px rgba(0, 229, 255, 0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="globe"></i> Explore My World
+                </button>
+                <button class="btn btn-outline" id="btn-quick-explore" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 1rem 2rem; border-radius: 50px; cursor: pointer; font-family: var(--font-heading); font-size: 1.1rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="zap"></i> Quick Explore
+                </button>
+            </div>
+
+            <!-- Narrative System Text (Hidden initially) -->
+            <div id="system-activation-text" style="font-family: monospace; font-size: 1.2rem; color: var(--cyan-glow); margin-top: 3rem; min-height: 2rem; text-shadow: 0 0 10px var(--cyan-glow);"></div>
+        </div>
+    </div>
+
+    <!-- PHASE 3: 3D EARTH CANVAS CONTAINER -->
+    <div id="earth-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; opacity: 0; pointer-events: none; transition: opacity 2s ease;"></div>
+
+    <!-- PHASE 10: Global Scroll Progress Bar -->
+    <div id="scroll-progress-bar" style="position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #00E5FF, #8B5CF6); z-index: 10001; width: 0%; box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); transition: width 0.1s ease-out;"></div>
+    <!-- PERSISTENT SCROLL-LINKED JOURNEY TRAIN -->
+    <!-- <div id="persistent-train-progress">
+        <div class="train-track-line">
+            <div id="persistent-train-icon">
+                <i data-lucide="train" class="train-loco-icon"></i>
+            </div>
+        </div>
+         <div class="train-stations">
+            <span class="station-node active" data-percent="0">0% DEPARTURE</span>
+            <span class="station-node" data-percent="20">20% EDUCATION</span>
+            <span class="station-node" data-percent="40">40% EXPERIENCE</span>
+            <span class="station-node" data-percent="60">60% PROJECTS</span>
+            <span class="station-node" data-percent="80">80% SKILLS</span>
+            <span class="station-node" data-percent="100">100% DESTINATION</span>
+        </div> -->
+    </div> 
+    <!-- PHASE 10: Floating Particles Container -->
+    <div id="particle-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; overflow: hidden;"></div>
+    
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" style="background: rgba(3, 7, 18, 0.5); position: relative; z-index: 1000;">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <i data-lucide="hexagon" class="brand-icon"></i>
+                <span class="brand-text">EDU <span class="text-glow-cyan">SPACE</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="courses.html" class="nav-link">Courses</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-primary">
+                    <i data-lucide="user"></i> Student Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- =========================================
+         CINEMATIC UNIVERSE CONTAINER
+         ========================================= -->
+    <main id="cinematic-universe">
+        
+        <!-- PHASE 3: Hero & Interactive Profile Photo -->
+        <section id="scene-hero" class="cinematic-section">
+            <div class="hero-cinematic-container">
+                
+                <!-- Left: Text Content -->
+                <div class="hero-text-content">
+                    <p class="sys-status text-gradient-cyan"><i data-lucide="cpu" style="width:16px;"></i> SYSTEM INITIALIZED</p>
+                    
+                    <h1 class="hero-glitch-text text-gradient-violet" id="heroHeadline" style="margin-bottom: 0;">HELLO, I'M</h1>
+                    <h2 class="hero-glitch-text text-gradient-violet" id="heroHeadline2">SHOBHONDEB ADAK</h2>
+                    <p class="hero-subline" id="heroSubheadline">
+                        "Engineer by education. Educator by passion. Explorer by curiosity."
+                    </p>
+                    
+                    <div class="hero-action-group">
+                        <button class="btn btn-primary" id="exploreBtn">
+                            <i data-lucide="zap"></i> Initialize Experience
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Holographic Profile Interaction -->
+                <div class="profile-tilt-wrapper" id="profileTilt">
+                    <div class="holo-card profile-card" id="profileCard">
+                        
+                        <!-- Magnetic Image Wrapper -->
+                        <div class="profile-image-container">
+                            <!-- Glowing background aura -->
+                            <div class="holo-aura"></div>
+                            
+                            <!-- Main Profile Image -->
+                            <img src="../assets/images/profile1.png" alt="Shobhondeb Adak" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800'">
+                            
+                            <!-- Rotating Energy Ring -->
+                            <div class="energy-ring"></div>
+                        </div>
+
+                        <!-- Data Panel (Hidden until clicked) -->
+                        <div class="profile-info-panel">
+                            <div class="panel-header">
+                                <h3 class="text-gradient-cyan">IDENTITY VERIFIED</h3>
+                                <button id="closeProfileBtn" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer;"><i data-lucide="x"></i></button>
+                            </div>
+                            <div class="panel-body">
+                                <p><strong>Status:</strong> Active</p>
+                                <p><strong>Education:</strong> B.Tech CSE @ JGEC</p>
+                                <p><strong>Role:</strong> Full-Stack Engineer & Educator</p>
+                                <div class="tech-tags mt-2">
+                                    <span>C++</span><span>Java</span><span>Python</span><span>WebGL</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="mouse-outline"><div class="mouse-wheel"></div></div>
+                <span class="scroll-text" style="font-size: 0.8rem; color: var(--text-muted);">SCROLL TO EXPLORE</span>
+            </div>
+        </section>
+
+        <!-- PHASE 4: Education & Journey -->
+        <section id="scene-education" class="cinematic-section">
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+                
+                <!-- Section Header -->
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="hero-glitch-text" style="font-size: 3rem;">ACADEMIC <span class="text-gradient-cyan">ORIGINS</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem;">The foundations of my engineering journey.</p>
+                </div>
+
+                <!-- Advanced Interactive Timeline -->
+                <div class="timeline-advanced">
+                    
+                    <!-- Central glowing track -->
+                    <div class="timeline-line">
+                        <div class="timeline-progress"></div>
+                    </div>
+
+                    <!-- Node 1: B.Tech -->
+                    <div class="timeline-node left-node">
+                        <div class="node-marker">
+                            <div class="marker-pulse"></div>
+                            <div class="marker-core"></div>
+                        </div>
+                        <div class="holo-card timeline-card">
+                            <div class="card-glow-accent"></div>
+                            <span class="timeline-date text-gradient-cyan">Currently Pursuing</span>
+                            <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading);">B.Tech — Computer Science & Engineering</h3>
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="map-pin" style="width:16px;"></i> Jalpaiguri Government Engineering College (JGEC)</h4>
+                            <p class="text-muted mt-2">Advancing core computer science principles, exploring advanced algorithms, and developing robust software engineering practices.</p>
+                            <div class="tech-tags mt-2">
+                                <span>Software Engineering</span><span>Advanced Algorithms</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 2: Diploma -->
+                    <div class="timeline-node right-node">
+                        <div class="node-marker">
+                            <div class="marker-pulse" style="background: var(--violet-neon);"></div>
+                            <div class="marker-core" style="border-color: var(--violet-neon);"></div>
+                        </div>
+                        <div class="holo-card timeline-card">
+                            <div class="card-glow-accent" style="background: var(--violet-neon); box-shadow: 0 0 10px var(--violet-neon);"></div>
+                            <span class="timeline-date text-gradient-violet">Successfully Completed</span>
+                            <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading);">Diploma — Computer Science & Engineering</h3>
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="award" style="width:16px;"></i> Board of Technical Education</h4>
+                            <p class="text-muted mt-2">Built a strong foundation in programming fundamentals, web development, and logical problem-solving.</p>
+                            <div class="tech-tags mt-2">
+                                <span>Programming Fundamentals</span><span>Web Dev</span><span>C / C++</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 5 & 6: 3D Environments -->
+        <section id="scene-3d-environments" class="cinematic-section" style="padding-top: 0; min-height: 100vh; position: relative; overflow: hidden;">
+            <!-- PHASE 7: 3D SPORTS CAR — THE HIGHWAY OF AMBITION -->
+        <section id="scene-sports-car" class="cinematic-section" style="padding-top: 0; min-height: 100vh; position: relative; overflow: hidden;">
+            <div id="car-canvas-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
+            
+            <div class="game-ui-layer is-visible" style="position: relative; z-index: 10; width: 100%; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 100px 2rem 2rem 2rem;">
+                
+                <div class="text-center" style="pointer-events: auto; text-align: center;">
+                    <h2 class="hero-glitch-text" style="font-size: 2.8rem; margin-bottom: 0.5rem;">ALWAYS MOVING <span class="text-gradient-cyan">FORWARD</span></h2>
+                    <p class="text-muted" style="font-size: 1.1rem; background: rgba(3,7,18,0.6); padding: 6px 18px; border-radius: 20px; display: inline-block; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+                        Driven by curiosity. Powered by ambition.
+                    </p>
+                </div>
+
+                <!-- Sports Car Dashboard HUD -->
+                <div class="car-hud-container" style="pointer-events: auto; max-width: 1280px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: flex-end;">
+                    
+                    <!-- Telemetry HUD -->
+                    <div class="holo-card" style="padding: 1.2rem 1.8rem; background: rgba(3,7,18,0.85); display: flex; gap: 2rem; align-items: center;">
+                        <div>
+                            <p class="sys-status text-gradient-cyan" style="margin-bottom: 2px;"><i data-lucide="gauge"></i> SPEED</p>
+                            <h3 id="car-speedometer" style="font-family: monospace; font-size: 2rem; color: #fff; margin: 0;">0 <span style="font-size: 0.9rem; color: var(--text-muted);">KM/H</span></h3>
+                        </div>
+                        <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.5rem;">
+                            <p class="sys-status text-gradient-violet" style="margin-bottom: 2px;"><i data-lucide="zap"></i> GEAR / RPM</p>
+                            <h4 id="car-gear" style="font-family: monospace; font-size: 1.4rem; color: var(--cyan-glow); margin: 0;">N | 0 RPM</h4>
+                        </div>
+                    </div>
+
+                    <!-- Driving Controls -->
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn btn-outline" id="btn-car-cam" style="background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="camera"></i> Cam View
+                        </button>
+                        <button class="btn btn-outline" id="btn-car-boost" style="background: rgba(139, 92, 246, 0.2); border: 1px solid var(--violet-neon); color: var(--violet-neon); padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="flame"></i> Nitro Boost
+                        </button>
+                        <button class="btn btn-primary" id="btn-car-start" style="background: rgba(0, 229, 255, 0.2); border: 1px solid var(--primary-cyan); color: var(--primary-cyan); padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                            <i data-lucide="power"></i> Engine Ignition
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 120px; background: linear-gradient(to top, var(--cinematic-bg-main), transparent); z-index: 5;"></div>
+        </section>
+            <!-- WebGL Canvas Container -->
+            <div id="canvas-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
+            
+            <!-- UI Overlay for the Train Game -->
+            <div class="game-ui-layer" style="position: relative; z-index: 10; width: 100%; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 100px 2rem 2rem 2rem;">
+                
+                <!-- Movie Subtitle Layer -->
+                <div class="cinematic-subtitles" id="train-story-container">
+                    <h3 id="train-story-text"></h3>
+                </div>
+
+                <!-- Storytelling Header -->
+                <div class="text-center" style="pointer-events: auto;">
+                    <h2 class="hero-glitch-text" style="font-size: 2.5rem; margin-bottom: 0.5rem;">EVERY STATION BUILDS A <span class="text-gradient-cyan">JOURNEY</span></h2>
+                    <p class="text-muted" style="font-size: 1.1rem; background: rgba(3,7,18,0.5); padding: 5px 15px; border-radius: 20px; display: inline-block; backdrop-filter: blur(10px);">My academic journey — every station represents a milestone.</p>
+                </div>
+
+                <!-- Interactive Game Controls -->
+                <div class="game-controls" style="pointer-events: auto; max-width: 1280px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: flex-end;">
+                    
+                    <!-- Telemetry Dashboard -->
+                    <div class="holo-card p-2" style="padding: 1rem 1.5rem; background: rgba(3,7,18,0.8);">
+                        <p class="sys-status text-gradient-cyan" style="margin-bottom: 5px;"><i data-lucide="activity"></i> ENGINE TELEMETRY</p>
+                        <h3 id="speedometer" style="font-family: monospace; font-size: 2rem; color: #fff;">0 <span style="font-size: 1rem; color: var(--text-muted);">km/h</span></h3>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-outline" id="btn-cam" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; display: flex; align-items: center; gap: 8px; padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer;">
+                            <i data-lucide="camera"></i> Change View
+                        </button>
+                        <button class="btn btn-primary" id="btn-train-start" style="background: rgba(0, 229, 255, 0.2); border: 1px solid var(--primary-cyan); color: var(--primary-cyan); display: flex; align-items: center; gap: 8px; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">
+                            <i data-lucide="play"></i> Start Engine
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Cinematic gradient fade at the bottom to blend into the next section -->
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to top, var(--cinematic-bg-main), transparent); z-index: 5;"></div>
+        </section>
+
+        <!-- PHASE 7: Professional Experience -->
+        <section id="scene-career" class="cinematic-section" style="min-height: auto; padding: 8rem 0;">
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+                
+                <!-- Section Header -->
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="hero-glitch-text" style="font-size: 3rem;">PROFESSIONAL <span class="text-gradient-violet">TRAJECTORY</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem;">Engineering robust solutions for the Government of India.</p>
+                </div>
+
+                <!-- VECC Experience Card -->
+                <div class="holo-card career-card" style="padding: 3rem;">
+                    <div class="career-grid">
+                        <!-- PHASE 8: TECHNICAL SKILLS MATRIX -->
+        <section id="scene-skills" class="cinematic-section" style="padding: 6rem 0; min-height: auto;">
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+                
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="hero-glitch-text" style="font-size: 3rem;">TECHNICAL <span class="text-gradient-cyan">ARSENAL</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem;">Programming, Development, and Pedagogical Expertise.</p>
+                </div>
+
+                <div class="skills-grid">
+                    
+                    <!-- Programming -->
+                    <div class="holo-card skill-category-card">
+                        <div class="skill-card-header">
+                            <i data-lucide="terminal" class="text-cyan"></i>
+                            <h3 class="text-gradient-cyan">Programming</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li><span class="skill-node cyan-node"></span> C & C++</li>
+                            <li><span class="skill-node cyan-node"></span> Java</li>
+                            <li><span class="skill-node cyan-node"></span> Python</li>
+                        </ul>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="holo-card skill-category-card">
+                        <div class="skill-card-header">
+                            <i data-lucide="layout" class="text-violet"></i>
+                            <h3 class="text-gradient-violet">Web Development</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li><span class="skill-node violet-node"></span> HTML5 & CSS3</li>
+                            <li><span class="skill-node violet-node"></span> Vanilla JavaScript</li>
+                            <li><span class="skill-node violet-node"></span> Three.js / WebGL</li>
+                            <li><span class="skill-node violet-node"></span> GSAP Animations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Computer Science -->
+                    <div class="holo-card skill-category-card">
+                        <div class="skill-card-header">
+                            <i data-lucide="cpu" class="text-cyan"></i>
+                            <h3 class="text-gradient-cyan">Computer Science</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li><span class="skill-node cyan-node"></span> Programming Fundamentals</li>
+                            <li><span class="skill-node cyan-node"></span> Logical Reasoning</li>
+                            <li><span class="skill-node cyan-node"></span> Problem-Solving Algorithms</li>
+                            <li><span class="skill-node cyan-node"></span> Data Structures</li>
+                        </ul>
+                    </div>
+
+                    <!-- Education & Mentorship -->
+                    <div class="holo-card skill-category-card">
+                        <div class="skill-card-header">
+                            <i data-lucide="book-open" class="text-violet"></i>
+                            <h3 class="text-gradient-violet">Mentorship</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li><span class="skill-node violet-node"></span> Mathematics (Classes 5–10)</li>
+                            <li><span class="skill-node violet-node"></span> Computer Science Tutoring</li>
+                            <li><span class="skill-node violet-node"></span> Concept Visualization</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+                        <!-- Left: Project Information -->
+                        <div class="career-info">
+                            <div class="badge" style="border: 1px solid var(--violet-neon); color: var(--violet-neon); margin-bottom: 1.5rem; background: rgba(139, 92, 246, 0.1); padding: 0.4rem 1rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                                <i data-lucide="briefcase" style="width: 14px;"></i> Professional Experience
+                            </div>
+                            
+                            <h3 style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: var(--font-heading); color: #fff; line-height: 1.1;">Variable Energy Cyclotron Centre (VECC)</h3>
+                            <h4 class="text-gradient-cyan" style="font-size: 1.1rem; margin-bottom: 2rem;">Department of Atomic Energy, Government of India</h4>
+                            
+                            <div class="project-box">
+                                <h5 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">Project: New Employee Data Entry Module</h5>
+                                <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6;">Designed and developed a secure, high-efficiency data entry and management system to streamline the onboarding of new personnel at the facility.</p>
+                                <div class="tech-tags">
+                                    <span>Grails Framework</span><span>Web Development</span><span>Database Management</span>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-outline" id="expandCareerBtn" style="margin-top: 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                                <i data-lucide="workflow"></i> View Architecture Details
+                            </button>
+                        </div>
+
+                        <!-- Right: Interactive Architecture Diagram -->
+                        <div class="career-visuals">
+                            <div class="workflow-diagram">
+                                <!-- Node 1: Input -->
+                                <div class="workflow-step">
+                                    <div class="step-icon"><i data-lucide="user-plus"></i></div>
+                                    <span class="step-label">HR Input</span>
+                                </div>
+                                
+                                <!-- Data Flow Line -->
+                                <div class="workflow-line">
+                                    <div class="data-packet"></div>
+                                </div>
+                                
+                                <!-- Node 2: Framework -->
+                                <div class="workflow-step central-node">
+                                    <div class="step-icon core-icon"><i data-lucide="cpu"></i></div>
+                                    <span class="step-label text-gradient-violet">Grails Engine</span>
+                                </div>
+                                
+                                <!-- Data Flow Line -->
+                                <div class="workflow-line">
+                                    <div class="data-packet" style="animation-delay: 1.5s;"></div>
+                                </div>
+                                
+                                <!-- Node 3: Database -->
+                                <div class="workflow-step">
+                                    <div class="step-icon"><i data-lucide="database"></i></div>
+                                    <span class="step-label">Gov Secure DB</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Expandable Technical Details (Hidden by default) -->
+                    <div class="career-details-expanded" id="careerDetails" style="display: none; height: 0; opacity: 0; overflow: hidden; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-cyan); font-size: 1.2rem;">Technical Implementation Strategy</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                            <div>
+                                <h5 style="color: #fff; margin-bottom: 0.5rem; display: flex; align-items: center;"><i data-lucide="shield-check" style="width: 16px; color: var(--violet-neon); margin-right: 5px;"></i> Architecture</h5>
+                                <p class="text-muted" style="font-size: 0.9rem;">Utilized the Grails MVC framework for rapid deployment and robust data separation.</p>
+                            </div>
+                            <div>
+                                <h5 style="color: #fff; margin-bottom: 0.5rem; display: flex; align-items: center;"><i data-lucide="lock" style="width: 16px; color: var(--violet-neon); margin-right: 5px;"></i> Validation</h5>
+                                <p class="text-muted" style="font-size: 0.9rem;">Implemented strict backend validation constraints to ensure absolute data integrity for sensitive personnel records.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 8: Personal Life & Likings -->
+        <section id="scene-personal" class="cinematic-section" style="padding: 6rem 0; min-height: auto;">
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+                
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="hero-glitch-text" style="font-size: 3rem;">BEYOND THE <span class="text-gradient-cyan">CODE</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem;">The human side — curiosity, creativity, and continuous learning.</p>
+                </div>
+
+                <!-- Modern Bento Grid Layout -->
+                <div class="bento-grid">
+                    
+                    <!-- Bento Box 1: Creative Pursuits (Large) -->
+                    <div class="holo-card bento-item bento-large">
+                        <div class="bento-content">
+                            <i data-lucide="video" class="bento-icon text-cyan"></i>
+                            <h3 class="text-gradient-cyan" style="font-size: 2rem; margin-bottom: 1rem;">Cinematic Visuals & Design</h3>
+                            <p class="text-muted" style="font-size: 1.05rem; line-height: 1.7;">Passionate about video editing, motion graphics, and digital visual creation. From crafting custom logos, phone wallpapers, and posters to producing audio-synced cinematic title sequences for short films (like the psychological thriller <em>"ATTACHED"</em>).</p>
+                            <div class="tech-tags mt-2">
+                                <span>Motion Graphics</span><span>Video Editing</span><span>Graphic Design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Box 2: Deep Tech -->
+                    <div class="holo-card bento-item">
+                        <div class="bento-content">
+                            <i data-lucide="network" class="bento-icon text-violet"></i>
+                            <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">Deep Tech Research</h3>
+                            <p class="text-muted" style="font-size: 0.95rem;">Exploring AI architectures, Hebbian learning rules, Neural Networks, NLP tokenization workflows, and signal processing mechanisms.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Box 3: Pedagogy -->
+                    <div class="holo-card bento-item">
+                        <div class="bento-content">
+                            <i data-lucide="book-open" class="bento-icon" style="color: var(--primary-blue);"></i>
+                            <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">Pedagogy & Education</h3>
+                            <p class="text-muted" style="font-size: 0.95rem;">Crafting custom examination modules and revision study guides to make complex concepts intuitive for young minds.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Box 4: The Linux Workflow (Wide) -->
+                    <div class="holo-card bento-item bento-wide">
+                        <div class="bento-content" style="display: flex; gap: 2rem; align-items: center; justify-content: space-between;">
+                            <div style="flex: 1;">
+                                <h3 class="text-gradient-violet" style="font-size: 1.8rem; margin-bottom: 0.5rem;">The Linux Environment</h3>
+                                <p class="text-muted" style="font-size: 1rem; line-height: 1.6;">I thrive in a terminal-driven Linux Mint workspace. Clean code, zero-dependency implementations, static architectures, and open-source tooling define my daily engineering philosophy.</p>
+                            </div>
+                            <div class="bento-icon-large" style="display: flex; justify-content: center; align-items: center; padding: 1rem;">
+                                <i data-lucide="terminal" style="width: 80px; height: 80px; color: rgba(139, 92, 246, 0.3);"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PHASE 9: Achievements & Gallery -->
+        <section id="scene-gallery" class="cinematic-section" style="padding: 6rem 0; min-height: auto; position: relative;">
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+                
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="hero-glitch-text" style="font-size: 3rem;">VISUAL <span class="text-gradient-violet">ARCHIVE</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem;">Milestones, achievements, and cinematic moments.</p>
+                </div>
+
+                <!-- Cinematic Gallery Grid -->
+                <div class="gallery-grid">
+                    
+                    <!-- Gallery Item 1: Wide -->
+                    <div class="holo-card gallery-item gallery-wide">
+                        <img src="../assets/images/gallery-1.jpg" alt="VECC Internship" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000'">
+                        <div class="gallery-overlay">
+                            <h3 class="text-gradient-cyan">VECC Internship</h3>
+                            <p>Department of Atomic Energy</p>
+                            <i data-lucide="maximize-2" class="zoom-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2: Standard -->
+                    <div class="holo-card gallery-item">
+                        <img src="../assets/images/gallery-2.jpg" alt="Attached Short Film" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=800'">
+                        <div class="gallery-overlay">
+                            <h3 class="text-gradient-violet">ATTACHED</h3>
+                            <p>Cinematic Titles & Visuals</p>
+                            <i data-lucide="maximize-2" class="zoom-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3: Tall -->
+                    <div class="holo-card gallery-item gallery-tall">
+                        <img src="../assets/images/gallery-3.jpg" alt="JGEC Engineering" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800'">
+                        <div class="gallery-overlay">
+                            <h3 class="text-gradient-cyan">JGEC B.Tech</h3>
+                            <p>Academic Excellence</p>
+                            <i data-lucide="maximize-2" class="zoom-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4: Standard -->
+                    <div class="holo-card gallery-item">
+                        <img src="../assets/images/gallery-4.jpg" alt="Diploma Achievement" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1589330694653-0618ce546875?auto=format&fit=crop&q=80&w=800'">
+                        <div class="gallery-overlay">
+                            <h3 style="color: #fff;">Diploma CSE</h3>
+                            <p>Successful Completion</p>
+                            <i data-lucide="maximize-2" class="zoom-icon"></i>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 5: Wide -->
+                    <div class="holo-card gallery-item gallery-wide">
+                        <img src="../assets/images/gallery-5.jpg" alt="Neural Networks" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000'">
+                        <div class="gallery-overlay">
+                            <h3 class="text-gradient-violet">AI & Deep Tech</h3>
+                            <p>Neural Network Explorations</p>
+                            <i data-lucide="maximize-2" class="zoom-icon"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Fullscreen Lightbox Overlay (Hidden by default) -->
+            <div id="galleryLightbox" class="lightbox">
+                <button id="closeLightbox" class="lightbox-close"><i data-lucide="x"></i></button>
+                <div class="lightbox-content">
+                    <img id="lightboxImg" src="" alt="Expanded View">
+                    <div id="lightboxCaption" class="lightbox-caption"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (From existing architecture) -->
+    <footer class="footer" style="position: relative; z-index: 10; background: rgba(3, 7, 18, 0.95); padding: 4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+        <div class="footer-container" style="max-width: 1280px; margin: 0 auto;">
+            <div class="footer-bottom" style="border-top: none;">
+                <p class="text-gradient-cyan" style="font-weight: 600; font-size: 1.2rem; margin-bottom: 10px; font-family: var(--font-heading);">THE JOURNEY NEVER STOPS.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 EDU SPACE | Shobhondeb Adak.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================
+         ADVANCED LIBRARIES (Loaded via CDN)
+         ========================================= -->
+    <!-- GSAP for Advanced Scroll Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js for 3D Environments -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Core Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/about-motion.js"></script> 
+    <script src="../js/about-3d.js"></script>
+
+    <!-- Train auto-start controller: starts the existing train engine when its scene is visible -->
+    <script src="../js/train-auto-start.js" defer></script> 
+    <script>lucide.createIcons();</script>
+</body>
+</html>
