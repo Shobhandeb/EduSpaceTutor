@@ -19,6 +19,61 @@
     <!-- Advanced Cinematic Styles -->
     <link rel="stylesheet" href="../css/about-advanced.css">
     <link rel="stylesheet" href="../css/about-responsive-fix.css">
+
+    <style>
+    /* CINEMATIC CRASH-AND-COMEBACK SEQUENCE */
+    #scene-3d-environments { isolation:isolate; }
+    .crash-trigger { background:linear-gradient(135deg,rgba(255,75,75,.2),rgba(139,92,246,.2)); border:1px solid rgba(255,110,110,.75); color:#fff; padding:.8rem 1.2rem; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:8px; font:600 .9rem var(--font-heading); transition:.25s; }
+    .crash-trigger:hover { transform:translateY(-3px); box-shadow:0 0 24px rgba(255,70,70,.35); }
+    #comeback-cinematic { position:fixed; inset:0; z-index:10050; display:none; overflow:hidden; color:#fff; background:#03040a; font-family:'Space Grotesk',sans-serif; }
+    #comeback-cinematic.active { display:flex; align-items:center; justify-content:center; animation:cinFadeIn .7s ease both; }
+    #comeback-cinematic .cin-backdrop { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 75%,rgba(255,75,25,.2),transparent 45%),linear-gradient(180deg,#050713 0%,#111827 55%,#05060a 100%); }
+    #comeback-cinematic .cin-grid { position:absolute; inset:0; opacity:.17; background-image:linear-gradient(rgba(0,229,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.18) 1px,transparent 1px); background-size:54px 54px; transform:perspective(500px) rotateX(62deg) scale(1.8); transform-origin:bottom; }
+    #comeback-cinematic .cin-vignette { position:absolute; inset:0; background:radial-gradient(ellipse,transparent 25%,rgba(0,0,0,.82) 100%); pointer-events:none; }
+    #comeback-cinematic .cin-flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; }
+    #comeback-cinematic.explode .cin-flash { animation:crashFlash .8s ease-out; }
+    #comeback-cinematic .cin-explosion { position:absolute; left:50%; top:53%; width:24vmin; height:24vmin; border-radius:50%; opacity:0; transform:translate(-50%,-50%) scale(.1); background:radial-gradient(circle,#fff 0 4%,#fff3a0 9%,#ff9d35 25%,#f04422 48%,rgba(255,45,15,0) 72%); filter:blur(2px); }
+    #comeback-cinematic.explode .cin-explosion { animation:fireball 1.5s cubic-bezier(.15,.7,.2,1) forwards; }
+    #comeback-cinematic .cin-smoke { position:absolute; left:50%; top:48%; width:48vmin; height:48vmin; border-radius:50%; opacity:0; transform:translate(-50%,-35%); background:radial-gradient(circle,rgba(35,39,48,.9),rgba(17,21,29,.7) 45%,transparent 70%); filter:blur(18px); }
+    #comeback-cinematic.explode .cin-smoke { animation:smokeRise 5s 0.4s ease-out forwards; }
+    #comeback-cinematic .cin-car-shape { position:absolute; left:50%; bottom:17%; width:min(520px,75vw); height:90px; transform:translateX(-50%); opacity:0; border-radius:55% 35% 15% 15%; background:linear-gradient(180deg,#4b5563,#101827 55%,#05070c); box-shadow:0 18px 30px #000,0 0 35px rgba(255,70,25,.35); }
+    #comeback-cinematic .cin-car-shape:before { content:""; position:absolute; width:45%; height:58px; left:28%; top:-43px; background:linear-gradient(135deg,#26384a,#090f19); clip-path:polygon(18% 0,82% 0,100% 100%,0 100%); border:1px solid #667085; }
+    #comeback-cinematic.explode .cin-car-shape { animation:carWreck .8s .1s ease-out forwards; }
+    #comeback-cinematic .cin-person { position:absolute; left:50%; bottom:13%; width:150px; height:330px; opacity:0; transform:translate(-50%,35px) scale(.85); filter:drop-shadow(0 0 22px rgba(0,229,255,.18)); }
+    #comeback-cinematic.reveal .cin-person { animation:heroRise 1.3s ease-out forwards; }
+    #comeback-cinematic .person-head { position:absolute; top:0; left:48px; width:56px; height:67px; border-radius:48% 48% 43% 43%; background:linear-gradient(110deg,#d6a17b,#8f5e45); box-shadow:inset -10px -3px 0 rgba(0,0,0,.2); }
+    #comeback-cinematic .person-hair { position:absolute; top:-5px; left:47px; width:58px; height:25px; border-radius:50% 50% 20% 20%; background:#101116; }
+    #comeback-cinematic .person-glasses { position:absolute; top:25px; left:43px; width:66px; height:18px; border-top:4px solid #08090d; border-bottom:4px solid #08090d; background:linear-gradient(90deg,#05070b 0 44%,transparent 44% 55%,#05070b 55%); z-index:2; }
+    #comeback-cinematic .person-body { position:absolute; top:62px; left:15px; width:120px; height:190px; border-radius:38px 38px 12px 12px; background:linear-gradient(110deg,#242a36,#080b12 70%); border:1px solid rgba(0,229,255,.22); }
+    #comeback-cinematic .person-body:after { content:""; position:absolute; left:56px; top:15px; width:2px; height:150px; background:rgba(255,255,255,.1); }
+    #comeback-cinematic .person-arm { position:absolute; top:85px; width:28px; height:150px; border-radius:20px; background:#171c27; transform-origin:top; }
+    #comeback-cinematic .person-arm.left { left:0; transform:rotate(12deg); }
+    #comeback-cinematic .person-arm.right { right:0; transform:rotate(-12deg); }
+    #comeback-cinematic .person-leg { position:absolute; top:235px; width:35px; height:95px; border-radius:10px; background:#090c13; }
+    #comeback-cinematic .person-leg.left { left:38px; transform:rotate(3deg); }
+    #comeback-cinematic .person-leg.right { right:38px; transform:rotate(-3deg); }
+    #comeback-cinematic .cin-copy { position:absolute; top:12%; left:7%; right:7%; text-align:center; z-index:4; }
+    #comeback-cinematic .cin-kicker { color:#00e5ff; letter-spacing:.35em; font-size:.72rem; font-weight:700; opacity:0; }
+    #comeback-cinematic .cin-title { margin:.7rem 0; font-size:clamp(2rem,5vw,4.8rem); line-height:1.02; letter-spacing:-.04em; text-shadow:0 5px 30px #000; opacity:0; }
+    #comeback-cinematic .cin-quote { max-width:760px; margin:1rem auto 0; color:#d5dbe7; font-size:clamp(1rem,2vw,1.35rem); line-height:1.65; opacity:0; }
+    #comeback-cinematic.reveal .cin-kicker { animation:copyReveal .8s .3s forwards; }
+    #comeback-cinematic.reveal .cin-title { animation:copyReveal .9s .55s forwards; }
+    #comeback-cinematic.reveal .cin-quote { animation:copyReveal 1s 1.1s forwards; }
+    #comeback-cinematic .cin-controls { position:absolute; z-index:8; bottom:28px; right:30px; display:flex; gap:10px; }
+    #comeback-cinematic .cin-controls button { border:1px solid rgba(255,255,255,.3); background:rgba(0,0,0,.5); color:#fff; border-radius:30px; padding:10px 18px; cursor:pointer; backdrop-filter:blur(12px); }
+    #comeback-cinematic .cin-controls button:hover { border-color:#00e5ff; }
+    @keyframes cinFadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes crashFlash { 0%{opacity:0} 12%{opacity:.95} 35%{opacity:.12} 55%{opacity:.65} 100%{opacity:0} }
+    @keyframes fireball { 0%{opacity:0;transform:translate(-50%,-50%) scale(.1)} 18%{opacity:1;transform:translate(-50%,-50%) scale(2.6)} 100%{opacity:.08;transform:translate(-50%,-50%) scale(5)} }
+    @keyframes smokeRise { 0%{opacity:0;transform:translate(-50%,0) scale(.4)} 30%{opacity:.9} 100%{opacity:.55;transform:translate(-50%,-65%) scale(1.8)} }
+    @keyframes carWreck { 0%{opacity:0;transform:translateX(-50%) scale(1)} 25%{opacity:1;transform:translateX(-50%) rotate(-5deg) scale(1.08)} 100%{opacity:.65;transform:translateX(-50%) rotate(2deg) scale(.94)} }
+    @keyframes heroRise { to{opacity:1;transform:translate(-50%,0) scale(1)} }
+    @keyframes copyReveal { to{opacity:1;transform:translateY(0)} }
+    @media(max-width:600px){ #comeback-cinematic .cin-person{transform:translate(-50%,35px) scale(.68);transform-origin:bottom center;bottom:9%} #comeback-cinematic.reveal .cin-person{animation:heroRiseMobile 1.2s forwards} .cin-car-shape{bottom:13%} #comeback-cinematic .cin-copy{top:9%} #comeback-cinematic .cin-controls{right:12px;bottom:14px} }
+    @keyframes heroRiseMobile { to{opacity:1;transform:translate(-50%,0) scale(.68)} }
+    @media(prefers-reduced-motion:reduce){ #comeback-cinematic *,#comeback-cinematic *:before{animation-duration:.01ms!important;animation-iteration-count:1!important} }
+    </style>
+
 </head>
 <body class="about-cinematic intro-active">
 
@@ -26,26 +81,19 @@
     <div id="cinematic-intro-overlay" style="position: fixed; inset: 0; width: 100vw; height: 100vh; background-color: var(--cinematic-bg-main); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden;">
         
         <!-- Cinematic Eagle Background -->
-    
         <video autoplay muted loop playsinline style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.35; mix-blend-mode: luminosity;">
-        <source src="../assets/images/eagle.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+            <source src="../assets/images/eagle.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
         <!-- Deep Space Background Elements -->
         <div id="intro-stars" style="position: absolute; inset: 0; z-index: 1;"></div>
         
         <!-- Intro Content -->
         <div id="intro-content" style="z-index: 10; position: relative;">
-            <!-- Floating Cinematic Control Panel -->
-            <!-- <div id="cinematic-controls" style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; align-items: center; background: rgba(15, 25, 45, 0.6); padding: 0.6rem 1.2rem; border-radius: 50px; border: 1px solid rgba(0, 229, 255, 0.2); backdrop-filter: blur(10px);">
-                <button id="cin-skip" class="cin-ctrl-btn" title="Skip Intro"><i data-lucide="skip-forward"></i> Skip</button>
-                <button id="cin-pause" class="cin-ctrl-btn" title="Pause / Resume"><i data-lucide="pause"></i></button>
-                <button id="cin-sound" class="cin-ctrl-btn" title="Sound Toggle"><i data-lucide="volume-x"></i></button>
-                <button id="cin-exit" class="cin-ctrl-btn" title="Exit Cinematic"><i data-lucide="x-circle"></i> Exit</button>
-            </div> -->
             <h1 class="hero-glitch-text text-gradient-cyan" id="intro-name" style="font-size: clamp(3rem, 6vw, 6rem); letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 0 5px 20px rgba(0,0,0,0.8);">Shobhandeb Adak</h1>
             <p class="text-muted" id="intro-sub" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 3rem auto; text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-                "Engineer in progress. Educator by passion. Explorer by curiosity."
+                "AI Engineer in progress. Educator by passion. Explorer by curiosity."
             </p>
             
             <div id="intro-buttons" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
@@ -57,7 +105,7 @@
                 </button>
             </div>
 
-            <!-- Narrative System Text (Hidden initially) -->
+            <!-- Narrative System Text -->
             <div id="system-activation-text" style="font-family: monospace; font-size: 1.2rem; color: var(--cyan-glow); margin-top: 3rem; min-height: 2rem; text-shadow: 0 0 10px var(--cyan-glow);"></div>
         </div>
     </div>
@@ -76,13 +124,14 @@
         <div class="nav-container">
             <a href="../index.html" class="nav-brand">
                 <i data-lucide="hexagon" class="brand-icon"></i>
-                <span class="brand-text">EDU <span class="text-glow-cyan">SPACE</span></span>
+                <span class="brand-text">PAKSHIR <span class="text-glow-cyan">CHOKH</span></span>
             </a>
             <div class="nav-links">
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link active">About</a>
                 <a href="courses.html" class="nav-link">Courses</a>
                 <a href="contact.html" class="nav-link">Contact</a>
+                <a href="notes.html" class="nav-link">Notes</a>
             </div>
             <div class="nav-actions">
                 <a href="login.html" class="btn btn-primary">
@@ -92,60 +141,53 @@
         </div>
     </nav>
 
-    <!-- =========================================
-         CINEMATIC UNIVERSE CONTAINER
-         ========================================= -->
     <main id="cinematic-universe">
         
         <!-- PHASE 3: Hero & Interactive Profile Photo -->
         <section id="scene-hero" class="cinematic-section">
             <div class="hero-cinematic-container">
                 
-                <!-- Left: Text Content -->
                 <div class="hero-text-content">
                     <p class="sys-status text-gradient-cyan"><i data-lucide="cpu" style="width:16px;"></i> SYSTEM INITIALIZED</p>
                     
                     <h1 class="hero-glitch-text text-gradient-violet" id="heroHeadline" style="margin-bottom: 0;">HELLO, I'M</h1>
                     <h2 class="hero-glitch-text text-gradient-violet" id="heroHeadline2">Shobhandeb Adak</h2>
                     <p class="hero-subline" id="heroSubheadline">
-                        "Engineer by education. Educator by passion. Explorer by curiosity."
+                        "AI Engineer in progress. Educator by passion. Explorer by curiosity."
                     </p>
                     
-                    <div class="hero-action-group">
-                        <button class="btn btn-primary" id="exploreBtn">
-                            <i data-lucide="zap"></i> Initialize Experience
-                        </button>
-                    </div>
+                    <div class="hero-action-group" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+    <button class="btn btn-primary" id="exploreBtn" style="padding: 0.8rem 1.5rem; display: flex; align-items: center; gap: 8px;">
+        <i data-lucide="zap"></i> Initialize Experience
+    </button>
+    
+    <!-- NEW: Download Resume Button -->
+    <a href="../assets/resume.pdf" download="Shobhandeb_Adak_Resume.pdf" class="btn btn-outline" style="background: rgba(139, 92, 246, 0.15); border: 1px solid var(--violet-neon); color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;">
+        <i data-lucide="download" style="color: var(--violet-neon);"></i> Download CV
+    </a>
+</div>
                 </div>
 
-                <!-- Right: Holographic Profile Interaction -->
                 <div class="profile-tilt-wrapper" id="profileTilt">
                     <div class="holo-card profile-card" id="profileCard">
                         
-                        <!-- Magnetic Image Wrapper -->
                         <div class="profile-image-container">
-                            <!-- Glowing background aura -->
                             <div class="holo-aura"></div>
-                            
-                            <!-- Main Profile Image -->
                             <img src="../assets/images/profile1.png" alt="Shobhandeb Adak" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800'">
-                            
-                            <!-- Rotating Energy Ring -->
                             <div class="energy-ring"></div>
                         </div>
 
-                        <!-- Data Panel (Hidden until clicked) -->
                         <div class="profile-info-panel">
                             <div class="panel-header">
                                 <h3 class="text-gradient-cyan">IDENTITY VERIFIED</h3>
                                 <button id="closeProfileBtn" style="background: transparent; border: none; color: var(--text-muted); cursor: pointer;"><i data-lucide="x"></i></button>
                             </div>
                             <div class="panel-body">
-                                <p><strong>Status:</strong> Active</p>
+                                <p><strong>Status:</strong> Active Developer & Researcher</p>
                                 <p><strong>Education:</strong> B.Tech CSE @ JGEC</p>
-                                <p><strong>Role:</strong> Full-Stack Engineer & Educator</p>
+                                <p><strong>Role:</strong> AI Engineer & Full-Stack Dev</p>
                                 <div class="tech-tags mt-2">
-                                    <span>C++</span><span>Java</span><span>Python</span><span>WebGL</span>
+                                    <span>Python</span><span>React.js</span><span>YOLOv8</span><span>AI/ML</span>
                                 </div>
                             </div>
                         </div>
@@ -154,64 +196,208 @@
                 </div>
             </div>
 
-            <!-- Scroll Indicator -->
             <div class="scroll-indicator">
                 <div class="mouse-outline"><div class="mouse-wheel"></div></div>
                 <span class="scroll-text" style="font-size: 0.8rem; color: var(--text-muted);">SCROLL TO EXPLORE</span>
             </div>
         </section>
 
-        <!-- PHASE 4: Education & Journey -->
+       <!-- PHASE 4: Education & Journey -->
         <section id="scene-education" class="cinematic-section">
             <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
                 
-                <!-- Section Header -->
                 <div class="text-center" style="margin-bottom: 4rem;">
                     <h2 class="hero-glitch-text" style="font-size: 3rem;">ACADEMIC <span class="text-gradient-cyan">ORIGINS</span></h2>
-                    <p class="text-muted" style="font-size: 1.2rem;">The foundations of my engineering journey.</p>
+                    <p class="text-muted" style="font-size: 1.2rem;">The foundations of my engineering and AI journey.</p>
                 </div>
 
-                <!-- Advanced Interactive Timeline -->
-                <div class="timeline-advanced">
+                <div class="timeline-advanced" style="position: relative; padding-bottom: 2rem;">
                     
                     <!-- Central glowing track -->
                     <div class="timeline-line">
                         <div class="timeline-progress"></div>
                     </div>
 
-                    <!-- Node 1: B.Tech -->
-                    <div class="timeline-node left-node">
+                    <!-- Node 1: B.Tech (Left) -->
+                    <div class="timeline-node left-node" style="margin-bottom: 4rem;">
                         <div class="node-marker">
                             <div class="marker-pulse"></div>
                             <div class="marker-core"></div>
                         </div>
                         <div class="holo-card timeline-card">
                             <div class="card-glow-accent"></div>
-                            <span class="timeline-date text-gradient-cyan">Currently Pursuing</span>
-                            <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading);">B.Tech — Computer Science & Engineering</h3>
-                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="map-pin" style="width:16px;"></i> Jalpaiguri Government Engineering College (JGEC)</h4>
-                            <p class="text-muted mt-2">Advancing core computer science principles, exploring advanced algorithms, and developing robust software engineering practices.</p>
-                            <div class="tech-tags mt-2">
-                                <span>Software Engineering</span><span>Advanced Algorithms</span>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+                                <div>
+                                    <span class="timeline-date text-gradient-cyan">Currently Pursuing</span>
+                                    <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading); margin-top: 0.5rem;">B.Tech — Computer Science & Engineering</h3>
+                                </div>
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 8px; padding: 5px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(0, 229, 255, 0.1);">
+                                    <img src="../assets/images/jgecLogo.jpeg" alt="JGEC Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+                                </div>
                             </div>
+                            
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="map-pin" style="width:16px;"></i> Jalpaiguri Government Engineering College (JGEC)</h4>
+                            <p class="text-muted mt-2">Jalpaiguri Government Engineering College (JGEC) is highly regarded as one of the premier state-funded engineering institutions in West Bengal, holding a strong legacy as the second-oldest engineering college in the state</p>
                         </div>
                     </div>
 
-                    <!-- Node 2: Diploma -->
-                    <div class="timeline-node right-node">
+                    <!-- Node 2: Microsoft Copilot (Right) -->
+                    <div class="timeline-node right-node" style="margin-bottom: 4rem;">
                         <div class="node-marker">
                             <div class="marker-pulse" style="background: var(--violet-neon);"></div>
                             <div class="marker-core" style="border-color: var(--violet-neon);"></div>
                         </div>
                         <div class="holo-card timeline-card">
                             <div class="card-glow-accent" style="background: var(--violet-neon); box-shadow: 0 0 10px var(--violet-neon);"></div>
-                            <span class="timeline-date text-gradient-violet">Successfully Completed</span>
-                            <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading);">Diploma — Computer Science & Engineering</h3>
-                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="award" style="width:16px;"></i> Board of Technical Education</h4>
-                            <p class="text-muted mt-2">Built a strong foundation in programming fundamentals, web development, and logical problem-solving.</p>
-                            <div class="tech-tags mt-2">
-                                <span>Programming Fundamentals</span><span>Web Dev</span><span>C / C++</span>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+                                <div>
+                                    <span class="timeline-date text-gradient-violet">Jul 2025</span>
+                                    <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading); margin-top: 0.5rem;">Microsoft Copilot for Productivity</h3>
+                                </div>
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 8px; padding: 5px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);">
+                                    <img src="../assets/images/microsoft.jpeg" alt="Microsoft Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+                                </div>
                             </div>
+                            
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="award" style="width:16px;"></i> Microsoft and LinkedIn</h4>
+                            <p class="text-muted mt-2">Earned the Microsoft Copilot for Productivity by Microsoft and LinkedIn certificate, specializing in Microsoft Copilot and Prompt engineering.</p>
+                            <div class="tech-tags mt-2">
+                                <span>Prompt Engineering</span><span>Microsoft Copilot</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 3: NIT FDP NLP (Left) -->
+                    <div class="timeline-node left-node" style="margin-bottom: 4rem;">
+                        <div class="node-marker">
+                            <div class="marker-pulse" style="background: var(--primary-cyan);"></div>
+                            <div class="marker-core" style="border-color: var(--primary-cyan);"></div>
+                        </div>
+                        <div class="holo-card timeline-card">
+                            <div class="card-glow-accent" style="background: var(--primary-cyan); box-shadow: 0 0 10px var(--primary-cyan);"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+                                <div>
+                                    <span class="timeline-date text-gradient-cyan">June 2025 - July 2025</span>
+                                    <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading); margin-top: 0.5rem;">NLP with Deep Learning</h3>
+                                </div>
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 8px; padding: 5px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(0, 229, 255, 0.15);">
+                                    <img src="../assets/images/nit-logo.png" alt="NIT Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+                                </div>
+                            </div>
+                            
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="award" style="width:16px;"></i> NIT Patna & NIT Jamshedpur (MeitY, Govt. of India)</h4>
+                            <p class="text-muted mt-2">Successfully completed a comprehensive Faculty Development Programme covering advanced NLP topics, deep learning models, and practical AI applications. Performance Grade: Good.</p>
+                            <div class="tech-tags mt-2">
+                                <span>NLP</span><span>Deep Learning</span><span>AI</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Node 4: Mazemerize SRISTI (Right) -->
+                    <div class="timeline-node right-node" style="margin-bottom: 4rem;">
+                        <div class="node-marker">
+                            <div class="marker-pulse" style="background: var(--violet-neon);"></div>
+                            <div class="marker-core" style="border-color: var(--violet-neon);"></div>
+                        </div>
+                        <div class="holo-card timeline-card">
+                            <div class="card-glow-accent" style="background: var(--violet-neon); box-shadow: 0 0 10px var(--violet-neon);"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+                                <div>
+                                    <span class="timeline-date text-gradient-violet">Mar 2025</span>
+                                    <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading); margin-top: 0.5rem;">3rd Prize – Mazemerize, SRISTI 2025</h3>
+                                </div>
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 8px; padding: 5px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);">
+                                    <img src="../assets/images/shristi.jpeg" alt="JGEC Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+                                </div>
+                            </div>
+                            
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="trophy" style="width:16px;"></i> Jalpaiguri Government Engineering College</h4>
+                            <p class="text-muted mt-2">Awarded 3rd Prize – Mazemerize, SRISTI 2025, utilizing skills in C (Programming Language).</p>
+                            <div class="tech-tags mt-2">
+                                <span>C/C++</span><span>Problem Solving</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 5: IIIT Naya Raipur (Left) -->
+                    <div class="timeline-node left-node" style="margin-bottom: 4rem;">
+                        <div class="node-marker">
+                            <div class="marker-pulse" style="background: var(--primary-blue);"></div>
+                            <div class="marker-core" style="border-color: var(--primary-blue);"></div>
+                        </div>
+                        <div class="holo-card timeline-card">
+                            <div class="card-glow-accent" style="background: var(--primary-blue); box-shadow: 0 0 10px var(--primary-blue);"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+                                <div>
+                                    <span class="timeline-date text-gradient-cyan" style="color: #3b82f6;">Certified Program</span>
+                                    <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading); margin-top: 0.5rem;">AI Training Program</h3>
+                                </div>
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 5px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);">
+                                    <img src="../assets/images/iiit-logo.png" alt="IIIT Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+                                </div>
+                            </div>
+                            
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="brain" style="width:16px;"></i> IIIT Naya Raipur</h4>
+                            <p class="text-muted mt-2">Intensive training in Next-Generation AI with Python: from ML and LLMs to Agentic Intelligence and Cybersecurity.</p>
+                            <div class="tech-tags mt-2">
+                                <span>LLMs</span><span>Agentic AI</span><span>Cybersecurity</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Node 6: Intel AI Workshop (Right) -->
+                    <div class="timeline-node right-node" style="margin-bottom: 4rem;">
+                        <div class="node-marker">
+                            <div class="marker-pulse" style="background: var(--primary-cyan);"></div>
+                            <div class="marker-core" style="border-color: var(--primary-cyan);"></div>
+                        </div>
+                        <div class="holo-card timeline-card">
+                            <div class="card-glow-accent" style="background: var(--primary-cyan); box-shadow: 0 0 10px var(--primary-cyan);"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+                                <div>
+                                    <span class="timeline-date text-gradient-cyan">Aug 2023</span>
+                                    <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading); margin-top: 0.5rem;">AI Competency Workshop</h3>
+                                </div>
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 8px; padding: 5px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(0, 229, 255, 0.15);">
+                                    <img src="../assets/images/intel-logo.png" alt="Intel Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+                                </div>
+                            </div>
+                            
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="cpu" style="width:16px;"></i> AI for Future Workforce Program (Intel)</h4>
+                            <p class="text-muted mt-2">Completed the AI Competency Workshop – AI for Future Workforce Program by Intel (Credential ID AI4FW202308110152).</p>
+                            <div class="tech-tags mt-2">
+                                <span>AI Workflows</span><span>Intel architecture</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 7: Diploma (Left) -->
+                    <div class="timeline-node left-node">
+                        <div class="node-marker">
+                            <div class="marker-pulse" style="background: var(--text-muted);"></div>
+                            <div class="marker-core" style="border-color: var(--text-muted);"></div>
+                        </div>
+                        <div class="holo-card timeline-card">
+                            <div class="card-glow-accent" style="background: rgba(255,255,255,0.1); box-shadow: 0 0 10px rgba(255,255,255,0.05);"></div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+                                <div>
+                                    <span class="timeline-date text-muted" style="color: #aaa;">Successfully Completed</span>
+                                    <h3 class="timeline-title" style="color: #fff; font-family: var(--font-heading); margin-top: 0.5rem;">Diploma — Computer Science & Engineering</h3>
+                                </div>
+                                <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 5px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(255,255,255,0.05);">
+                                    <img src="../assets/images/wbscte-logo.png" alt="WBSCTE Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+                                </div>
+                            </div>
+                            
+                            <h4 class="timeline-subtitle text-muted mt-1"><i data-lucide="book-open" style="width:16px;"></i> West Bengal State Council of Technical Education</h4>
+                            <p class="text-muted mt-2">Built a strong foundation in programming fundamentals, web development, and logical problem-solving.</p>
                         </div>
                     </div>
 
@@ -221,8 +407,6 @@
 
         <!-- PHASE 5 & 6: 3D Environments -->
         <section id="scene-3d-environments" class="cinematic-section" style="padding-top: 0; min-height: 100vh; position: relative; overflow: hidden;">
-            <!-- PHASE 7: 3D SPORTS CAR — THE HIGHWAY OF AMBITION -->
-        <section id="scene-sports-car" class="cinematic-section" style="padding-top: 0; min-height: 100vh; position: relative; overflow: hidden;">
             <div id="car-canvas-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
             
             <div class="game-ui-layer is-visible" style="position: relative; z-index: 10; width: 100%; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 100px 2rem 2rem 2rem;">
@@ -234,10 +418,8 @@
                     </p>
                 </div>
 
-                <!-- Sports Car Dashboard HUD -->
                 <div class="car-hud-container" style="pointer-events: auto; max-width: 1280px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: flex-end;">
                     
-                    <!-- Telemetry HUD -->
                     <div class="holo-card" style="padding: 1.2rem 1.8rem; background: rgba(3,7,18,0.85); display: flex; gap: 2rem; align-items: center;">
                         <div>
                             <p class="sys-status text-gradient-cyan" style="margin-bottom: 2px;"><i data-lucide="gauge"></i> SPEED</p>
@@ -249,7 +431,6 @@
                         </div>
                     </div>
 
-                    <!-- Driving Controls -->
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <button class="btn btn-outline" id="btn-car-cam" style="background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                             <i data-lucide="camera"></i> Cam View
@@ -260,6 +441,9 @@
                         <button class="btn btn-primary" id="btn-car-start" style="background: rgba(0, 229, 255, 0.2); border: 1px solid var(--primary-cyan); color: var(--primary-cyan); padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                             <i data-lucide="power"></i> Engine Ignition
                         </button>
+                        <button class="crash-trigger" id="btn-comeback-cinematic" type="button" aria-label="Play cinematic crash and comeback sequence">
+                            <i data-lucide="clapperboard"></i> Cinematic Moment
+                        </button>
                     </div>
 
                 </div>
@@ -267,331 +451,995 @@
             
             <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 120px; background: linear-gradient(to top, var(--cinematic-bg-main), transparent); z-index: 5;"></div>
         </section>
-            <!-- WebGL Canvas Container -->
-            <div id="canvas-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;"></div>
-            
-            <!-- UI Overlay for the Train Game -->
-            <div class="game-ui-layer" style="position: relative; z-index: 10; width: 100%; height: 100vh; pointer-events: none; display: flex; flex-direction: column; justify-content: space-between; padding: 100px 2rem 2rem 2rem;">
+
+        <!-- PHASE 7: Professional Experience & Projects -->
+        <section id="scene-career" class="cinematic-section" style="min-height: auto; padding: 8rem 0;">
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
                 
-                <!-- Movie Subtitle Layer -->
-                <div class="cinematic-subtitles" id="train-story-container">
-                    <h3 id="train-story-text"></h3>
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <h2 class="hero-glitch-text" style="font-size: 3rem;">EXPERIENCE & <span class="text-gradient-violet">PROJECTS</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem;">Engineering AI solutions, blockchain security, and robust government architecture.</p>
                 </div>
 
-                <!-- Storytelling Header -->
-                <div class="text-center" style="pointer-events: auto;">
-                    <h2 class="hero-glitch-text" style="font-size: 2.5rem; margin-bottom: 0.5rem;">EVERY STATION BUILDS A <span class="text-gradient-cyan">JOURNEY</span></h2>
-                    <p class="text-muted" style="font-size: 1.1rem; background: rgba(3,7,18,0.5); padding: 5px 15px; border-radius: 20px; display: inline-block; backdrop-filter: blur(10px);">My academic journey — every station represents a milestone.</p>
-                </div>
+                <div style="display: flex; flex-direction: column; gap: 3rem;">
+        <!-- PROJECT 1: TimberTrust -->
+                    <div class="holo-card career-card" style="padding: 2.5rem; border-left: 4px solid var(--violet-neon);">
+                        
+                        <!-- Two-Image Flex Container -->
+                        <div style="display: flex; gap: 1rem; width: 100%; height: 100%; overflow: hidden; position: relative; border-bottom: 1px solid rgba(139, 92, 246, 0.2); margin-bottom: 1.5rem; border-radius: 8px;">
+                            
+                            <!-- Left Image -->
+                            <div style="flex: 1; overflow: hidden;">
+                                <img src="../assets/images/timbertrust-bonolota.jpg" alt="Timber Trust" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='https://media.licdn.com/dms/image/v2/D4D22AQFu8VRsbK0n-w/feedshare-shrink_480/B4DZ.AnqCkK8Ag-/0/1784569307529?e=1795046400&v=beta&t=O86WwKZjqWFtGueNr7CHytKcWypSPbMhJ9OQcHtKXVQ'">
+                            </div>
 
-                <!-- Interactive Game Controls -->
-                <div class="game-controls" style="pointer-events: auto; max-width: 1280px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: flex-end;">
-                    
-                    <!-- Telemetry Dashboard -->
-                    <div class="holo-card p-2" style="padding: 1rem 1.5rem; background: rgba(3,7,18,0.8);">
-                        <p class="sys-status text-gradient-cyan" style="margin-bottom: 5px;"><i data-lucide="activity"></i> ENGINE TELEMETRY</p>
-                        <h3 id="speedometer" style="font-family: monospace; font-size: 2rem; color: #fff;">0 <span style="font-size: 1rem; color: var(--text-muted);">km/h</span></h3>
+                            <!-- Right Image -->
+                            <div style="flex: 1; overflow: hidden;">
+                                <img src="../assets/images/ieeeCert.jpeg" alt="IEEE Certificate" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000'">
+                            </div>
+                            
+                            <!-- Global Gradient Overlay -->
+                            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,7,18,0.9), transparent); pointer-events: none;"></div>
+                        </div>
+
+                        <div class="badge" style="border: 1px solid var(--violet-neon); color: var(--violet-neon); margin-bottom: 1.5rem; background: rgba(139, 92, 246, 0.1); padding: 0.4rem 1rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                            <i data-lucide="shield" style="width: 14px;"></i> Architecture & AI
+                        </div>
+                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem; font-family: var(--font-heading); color: #fff;">TimberTrust / BONOLATA</h3>
+                        <h4 class="text-gradient-violet" style="font-size: 1.1rem; margin-bottom: 1.5rem;">AI-Enabled Timber Supply Chain Security</h4>
+                        <p class="text-muted" style="font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            Developed a digital timber chain-of-custody system monitoring movement from source to destination. Integrated QR-based tracking, blockchain records, and transport monitoring with custom stop and route-deviation detection algorithms. Added AI-based tree species detection using trained deep-learning models, managed via a comprehensive React/FastAPI dashboard.
+                        </p>
+                        <div class="tech-tags">
+                            <span>Python</span><span>FastAPI</span><span>Blockchain</span><span>Computer Vision</span><span>React</span>
+                        </div>
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div style="display: flex; gap: 10px;">
-                        <button class="btn btn-outline" id="btn-cam" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; display: flex; align-items: center; gap: 8px; padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer;">
-                            <i data-lucide="camera"></i> Change View
-                        </button>
-                        <button class="btn btn-primary" id="btn-train-start" style="background: rgba(0, 229, 255, 0.2); border: 1px solid var(--primary-cyan); color: var(--primary-cyan); display: flex; align-items: center; gap: 8px; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer;">
-                            <i data-lucide="play"></i> Start Engine
-                        </button>
+                    <!-- PROJECT 2: AI Camera -->
+                    <div class="holo-card career-card" style="padding: 2.5rem; border-left: 4px solid var(--primary-cyan);">
+                            <!-- Two-Image Flex Container -->
+    <div style="display: flex; gap: 1rem; width: 100%; height: 100%; overflow: hidden; position: relative; border-bottom: 1px solid rgba(59, 130, 246, 0.2); margin-bottom: 1.5rem; border-radius: 8px;">
+        
+        <!-- Left Image -->
+        <div style="flex: 1; overflow: hidden;">
+            <img src="../assets/images/brahma.jpeg" alt="VECC Internship 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='https://media.licdn.com/dms/image/v2/D4D22AQFu8VRsbK0n-w/feedshare-shrink_480/B4DZ.AnqCkK8Ag-/0/1784569307529?e=1795046400&v=beta&t=O86WwKZjqWFtGueNr7CHytKcWypSPbMhJ9OQcHtKXVQ'">
+        </div>
+
+        <!-- Right Image -->
+        <div style="flex: 1; overflow: hidden;">
+            <img src="../assets/images/iitCert.jpeg" alt="VECC Internship 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000'">
+        </div>
+        
+        <!-- Global Gradient Overlay -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,7,18,0.9), transparent); pointer-events: none;"></div>
+    </div>
+                        <div class="badge" style="border: 1px solid var(--primary-cyan); color: var(--primary-cyan); margin-bottom: 1.5rem; background: rgba(0, 229, 255, 0.1); padding: 0.4rem 1rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+                            <i data-lucide="eye" style="width: 14px;"></i> Computer Vision & NLP
+                        </div>
+                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem; font-family: var(--font-heading); color: #fff;">Open-Vocabulary AI Camera Concept</h3>
+                        <h4 class="text-gradient-cyan" style="font-size: 1.1rem; margin-bottom: 1.5rem;">Automated Real-Time Rule Violation Detection</h4>
+                        <p class="text-muted" style="font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            Engineered an automated alert and notification mechanism designed to monitor flexible, natural-language-based rules. Utilizing YOLOv8, LLMs, and real-time video analytics to understand context and detect complex rule violations dynamically without hard-coded visual parameters.
+                        </p>
+                        <div class="tech-tags">
+                            <span>YOLOv8</span><span>LLMs</span><span>NLP</span><span>Video Analytics</span>
+                        </div>
+                    </div>
+
+    <!-- PROJECT 3: VECC Internship -->
+<div class="holo-card career-card" style="padding: 2.5rem; border-left: 4px solid #3b82f6;">
+    
+    <!-- Two-Image Flex Container -->
+    <div style="display: flex; gap: 1rem; width: 100%; height: 100%; overflow: hidden; position: relative; border-bottom: 1px solid rgba(59, 130, 246, 0.2); margin-bottom: 1.5rem; border-radius: 8px;">
+        
+        <!-- Left Image -->
+        <div style="flex: 1; overflow: hidden;">
+            <img src="../assets/images/vecc.jpg" alt="VECC Internship 1" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='https://media.licdn.com/dms/image/v2/D4D22AQFu8VRsbK0n-w/feedshare-shrink_480/B4DZ.AnqCkK8Ag-/0/1784569307529?e=1795046400&v=beta&t=O86WwKZjqWFtGueNr7CHytKcWypSPbMhJ9OQcHtKXVQ'">
+        </div>
+
+        <!-- Right Image -->
+        <div style="flex: 1; overflow: hidden;">
+            <img src="../assets/images/cert.jpeg" alt="VECC Internship 2" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000'">
+        </div>
+        
+        <!-- Global Gradient Overlay -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,7,18,0.9), transparent); pointer-events: none;"></div>
+    </div>
+
+    <!-- Internship Badge -->
+    <div class="badge" style="border: 1px solid #3b82f6; color: #3b82f6; margin-bottom: 1.5rem; background: rgba(59, 130, 246, 0.1); padding: 0.4rem 1rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
+        <i data-lucide="briefcase" style="width: 14px;"></i> Internship Experience
+    </div>
+    
+    <!-- NEW: Flex container for Text + Gov Logo -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 250px;">
+
+            <h3 style="font-size: 2rem; margin-bottom: 0.5rem; font-family: var(--font-heading); color: #fff;">Variable Energy Cyclotron Centre (VECC)</h3>
+            <h4 style="color: #3b82f6; font-size: 1.1rem; margin-bottom: 0;">Department of Atomic Energy, Government of India</h4>
+        </div>
+        
+        <!-- Government of India Logo Container -->
+        <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.02); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 50%; padding: 8px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);">
+            <img src="../assets/images/gov-india-logo.png" alt="Gov of India" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg'">
+        </div>
+    </div>
+    
+    <p class="text-muted" style="font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+        Designed and developed a secure, high-efficiency data entry and management module for onboarding new personnel using the Grails Framework. <strong>Received a "Very Good" performance rating</strong> for delivering robust data separation and strict backend validation for sensitive personnel records.
+    </p>
+    <div class="tech-tags">
+        <span>Grails Framework</span><span>Database Management</span><span>Government IT</span>
+    </div>
+</div>
                     </div>
 
                 </div>
             </div>
-            
-            <!-- Cinematic gradient fade at the bottom to blend into the next section -->
-            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to top, var(--cinematic-bg-main), transparent); z-index: 5;"></div>
         </section>
 
-        <!-- PHASE 7: Professional Experience -->
-        <section id="scene-career" class="cinematic-section" style="min-height: auto; padding: 8rem 0;">
-            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
-                
-                <!-- Section Header -->
-                <div class="text-center" style="margin-bottom: 4rem;">
-                    <h2 class="hero-glitch-text" style="font-size: 3rem;">PROFESSIONAL <span class="text-gradient-violet">TRAJECTORY</span></h2>
-                    <p class="text-muted" style="font-size: 1.2rem;">Engineering robust solutions for the Government of India.</p>
-                </div>
-
-                <!-- VECC Experience Card -->
-                <div class="holo-card career-card" style="padding: 3rem;">
-                    <div class="career-grid">
-                        <!-- PHASE 8: TECHNICAL SKILLS MATRIX -->
-        <section id="scene-skills" class="cinematic-section" style="padding: 6rem 0; min-height: auto;">
+        <!-- PHASE 8: TECHNICAL SKILLS MATRIX -->
+        <section id="scene-skills" class="cinematic-section" style="padding: 2rem 0; min-height: auto;">
             <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
                 
                 <div class="text-center" style="margin-bottom: 4rem;">
                     <h2 class="hero-glitch-text" style="font-size: 3rem;">TECHNICAL <span class="text-gradient-cyan">ARSENAL</span></h2>
-                    <p class="text-muted" style="font-size: 1.2rem;">Programming, Development, and Pedagogical Expertise.</p>
+                    <p class="text-muted" style="font-size: 1.2rem;">End-to-end expertise across AI, web technologies, and systems architecture.</p>
                 </div>
 
                 <div class="skills-grid">
                     
-                    <!-- Programming -->
+                    <!-- AI & Machine Learning -->
                     <div class="holo-card skill-category-card">
                         <div class="skill-card-header">
-                            <i data-lucide="terminal" class="text-cyan"></i>
-                            <h3 class="text-gradient-cyan">Programming</h3>
+                            <i data-lucide="brain" class="text-cyan"></i>
+                            <h3 class="text-gradient-cyan">AI & Machine Learning</h3>
                         </div>
                         <ul class="skill-list">
-                            <li><span class="skill-node cyan-node"></span> C & C++</li>
-                            <li><span class="skill-node cyan-node"></span> Java</li>
-                            <li><span class="skill-node cyan-node"></span> Python</li>
+                            <li><span class="skill-node cyan-node"></span> YOLOv8, PyTorch, TensorFlow</li>
+                            <li><span class="skill-node cyan-node"></span> Deep Learning & CNNs</li>
+                            <li><span class="skill-node cyan-node"></span> NLP & Prompt Engineering</li>
+                            <li><span class="skill-node cyan-node"></span> LLMs, RAG, Agentic AI</li>
                         </ul>
                     </div>
 
-                    <!-- Web Development -->
+                    <!-- Web & Backend -->
                     <div class="holo-card skill-category-card">
                         <div class="skill-card-header">
                             <i data-lucide="layout" class="text-violet"></i>
-                            <h3 class="text-gradient-violet">Web Development</h3>
+                            <h3 class="text-gradient-violet">Web Technologies</h3>
                         </div>
                         <ul class="skill-list">
+                            <li><span class="skill-node violet-node"></span> React.js & JavaScript</li>
+                            <li><span class="skill-node violet-node"></span> Node.js & Express.js</li>
                             <li><span class="skill-node violet-node"></span> HTML5 & CSS3</li>
-                            <li><span class="skill-node violet-node"></span> Vanilla JavaScript</li>
-                            <li><span class="skill-node violet-node"></span> Three.js / WebGL</li>
-                            <li><span class="skill-node violet-node"></span> GSAP Animations</li>
+                            <li><span class="skill-node violet-node"></span> FastAPI Framework</li>
                         </ul>
                     </div>
 
-                    <!-- Computer Science -->
+                    <!-- Programming & Data -->
                     <div class="holo-card skill-category-card">
                         <div class="skill-card-header">
-                            <i data-lucide="cpu" class="text-cyan"></i>
-                            <h3 class="text-gradient-cyan">Computer Science</h3>
+                            <i data-lucide="terminal" class="text-cyan"></i>
+                            <h3 class="text-gradient-cyan">Programming & Data</h3>
                         </div>
                         <ul class="skill-list">
-                            <li><span class="skill-node cyan-node"></span> Programming Fundamentals</li>
-                            <li><span class="skill-node cyan-node"></span> Logical Reasoning</li>
-                            <li><span class="skill-node cyan-node"></span> Problem-Solving Algorithms</li>
-                            <li><span class="skill-node cyan-node"></span> Data Structures</li>
+                            <li><span class="skill-node cyan-node"></span> Python</li>
+                            <li><span class="skill-node cyan-node"></span> Java (Object Oriented)</li>
+                            <li><span class="skill-node cyan-node"></span> MySQL & SQL</li>
+                            <li><span class="skill-node cyan-node"></span> JSON Data Structuring</li>
                         </ul>
                     </div>
 
-                    <!-- Education & Mentorship -->
+                    <!-- Systems & Tools -->
                     <div class="holo-card skill-category-card">
                         <div class="skill-card-header">
-                            <i data-lucide="book-open" class="text-violet"></i>
-                            <h3 class="text-gradient-violet">Mentorship</h3>
+                            <i data-lucide="server" class="text-violet"></i>
+                            <h3 class="text-gradient-violet">Systems & Domains</h3>
                         </div>
                         <ul class="skill-list">
-                            <li><span class="skill-node violet-node"></span> Mathematics (Classes 5–10)</li>
-                            <li><span class="skill-node violet-node"></span> Computer Science Tutoring</li>
-                            <li><span class="skill-node violet-node"></span> Concept Visualization</li>
+                            <li><span class="skill-node violet-node"></span> Blockchain & Cryptography</li>
+                            <li><span class="skill-node violet-node"></span> Cybersecurity Basics</li>
+                            <li><span class="skill-node violet-node"></span> Real-Time Video Analytics</li>
+                            <li><span class="skill-node violet-node"></span> Git, GitHub, Linux</li>
                         </ul>
                     </div>
 
                 </div>
             </div>
         </section>
-                        <!-- Left: Project Information -->
-                        <div class="career-info">
-                            <div class="badge" style="border: 1px solid var(--violet-neon); color: var(--violet-neon); margin-bottom: 1.5rem; background: rgba(139, 92, 246, 0.1); padding: 0.4rem 1rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem;">
-                                <i data-lucide="briefcase" style="width: 14px;"></i> Professional Experience
-                            </div>
-                            
-                            <h3 style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: var(--font-heading); color: #fff; line-height: 1.1;">Variable Energy Cyclotron Centre (VECC)</h3>
-                            <h4 class="text-gradient-cyan" style="font-size: 1.1rem; margin-bottom: 2rem;">Department of Atomic Energy, Government of India</h4>
-                            
-                            <div class="project-box">
-                                <h5 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">Project: New Employee Data Entry Module</h5>
-                                <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6;">Designed and developed a secure, high-efficiency data entry and management system to streamline the onboarding of new personnel at the facility.</p>
-                                <div class="tech-tags">
-                                    <span>Grails Framework</span><span>Web Development</span><span>Database Management</span>
-                                </div>
-                            </div>
 
-                            <button class="btn btn-outline" id="expandCareerBtn" style="margin-top: 1.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
-                                <i data-lucide="workflow"></i> View Architecture Details
-                            </button>
-                        </div>
+       <!-- PHASE 9: Personal Life & Likings (BEYOND THE CODE) -->
+        <section id="scene-personal" class="cinematic-section" style="padding: 8rem 0; min-height: auto; position: relative;">
+            
+            <!-- SCOPED CSS FOR THIS SECTION -->
+            <style>
+                /* Advanced Bento Grid */
+                .btc-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 1.5rem;
+                    margin-bottom: 4rem;
+                }
+                .btc-card {
+                    position: relative;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    background: rgba(3, 7, 18, 0.6);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    display: flex;
+                    flex-direction: column;
+                    transform-style: preserve-3d;
+                    perspective: 1000px;
+                }
+                .btc-card-inner {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    transform: translateZ(0); /* Hardware accel */
+                    transition: transform 0.1s ease-out;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .btc-col-span-2 { grid-column: span 2; }
+                .btc-row-span-2 { grid-row: span 2; }
+                
+                /* Image Backgrounds & Overlays */
+                .btc-bg-wrapper {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 0;
+                    overflow: hidden;
+                }
+                .btc-bg-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: 0.5;
+                    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+                    filter: grayscale(0.4) contrast(1.2);
+                }
+                .btc-card:hover .btc-bg-img {
+                    transform: scale(1.08);
+                    opacity: 0.7;
+                    filter: grayscale(0) contrast(1.1);
+                }
+                .btc-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to top, rgba(3,7,18,0.95) 10%, rgba(3,7,18,0.4) 60%, transparent);
+                    z-index: 1;
+                }
+                
+                /* Content Styling */
+                .btc-content {
+                    position: relative;
+                    z-index: 2;
+                    padding: 2.5rem;
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    justify-content: flex-end;
+                    transform: translateZ(30px); /* 3D pop effect on hover */
+                }
+                .btc-icon-glass {
+                    background: rgba(255,255,255,0.1);
+                    backdrop-filter: blur(12px);
+                    border: 1px solid rgba(255,255,255,0.2);
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 12px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: auto;
+                    transition: all 0.4s ease;
+                }
+                
+                /* Social Media Specific Styles */
+                .btc-social-trigger {
+                    cursor: pointer;
+                    border: 1px solid rgba(0, 229, 255, 0.3);
+                    background: linear-gradient(135deg, rgba(3,7,18,0.9), rgba(0,229,255,0.05));
+                }
+                .btc-social-trigger:hover {
+                    border-color: rgba(0, 229, 255, 0.8);
+                    box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+                }
+                .btc-floating-icons {
+                    display: flex;
+                    gap: 15px;
+                    margin-bottom: auto;
+                }
+                .btc-float {
+                    animation: floatY 4s ease-in-out infinite;
+                    filter: drop-shadow(0 0 10px rgba(0,229,255,0.5));
+                }
+                .btc-float:nth-child(2) { animation-delay: -2s; filter: drop-shadow(0 0 10px rgba(139,92,246,0.5)); }
+                
+                @keyframes floatY {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-10px); }
+                }
 
-                        <!-- Right: Interactive Architecture Diagram -->
-                        <div class="career-visuals">
-                            <div class="workflow-diagram">
-                                <!-- Node 1: Input -->
-                                <div class="workflow-step">
-                                    <div class="step-icon"><i data-lucide="user-plus"></i></div>
-                                    <span class="step-label">HR Input</span>
-                                </div>
-                                
-                                <!-- Data Flow Line -->
-                                <div class="workflow-line">
-                                    <div class="data-packet"></div>
-                                </div>
-                                
-                                <!-- Node 2: Framework -->
-                                <div class="workflow-step central-node">
-                                    <div class="step-icon core-icon"><i data-lucide="cpu"></i></div>
-                                    <span class="step-label text-gradient-violet">Grails Engine</span>
-                                </div>
-                                
-                                <!-- Data Flow Line -->
-                                <div class="workflow-line">
-                                    <div class="data-packet" style="animation-delay: 1.5s;"></div>
-                                </div>
-                                
-                                <!-- Node 3: Database -->
-                                <div class="workflow-step">
-                                    <div class="step-icon"><i data-lucide="database"></i></div>
-                                    <span class="step-label">Gov Secure DB</span>
-                                </div>
+                /* Likes & Dislikes Panels */
+                .btc-traits-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 2rem;
+                    margin-bottom: 5rem;
+                }
+                .btc-trait-panel {
+                    padding: 2.5rem;
+                    border-radius: 16px;
+                    background: rgba(3, 7, 18, 0.4);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.05);
+                }
+                .btc-trait-panel.likes { border-top: 3px solid #10B981; }
+                .btc-trait-panel.dislikes { border-top: 3px solid #EF4444; }
+                .btc-trait-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    display: grid;
+                    gap: 1rem;
+                }
+                .btc-trait-list li {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 12px;
+                    font-size: 1.05rem;
+                    color: var(--text-muted);
+                }
+                
+                /* Philosophy Signature */
+                .btc-philosophy {
+                    text-align: center;
+                    padding: 4rem 2rem;
+                    position: relative;
+                }
+                .btc-quote {
+                    font-family: var(--font-heading);
+                    font-size: clamp(1.8rem, 4vw, 2.5rem);
+                    line-height: 1.4;
+                    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    margin-bottom: 1.5rem;
+                    max-width: 900px;
+                    margin: 0 auto 1.5rem auto;
+                }
+                
+                /* Social Cinematic Modal Overlay */
+                #social-modal-overlay {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 10000;
+                    background: rgba(3, 7, 18, 0.9);
+                    backdrop-filter: blur(20px);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                #social-modal-overlay.active {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+                .social-modal-content {
+                    width: 100%;
+                    max-width: 800px;
+                    padding: 2rem;
+                    transform: scale(0.9) translateY(30px);
+                    opacity: 0;
+                    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+                    transition-delay: 0.1s;
+                }
+                #social-modal-overlay.active .social-modal-content {
+                    transform: scale(1) translateY(0);
+                    opacity: 1;
+                }
+                .social-profiles-flex {
+                    display: flex;
+                    gap: 2rem;
+                }
+                .social-profile-card {
+                    flex: 1;
+                    padding: 3rem 2rem;
+                    border-radius: 16px;
+                    text-align: center;
+                    background: rgba(255,255,255,0.03);
+                    border: 1px solid rgba(255,255,255,0.08);
+                    position: relative;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .social-profile-card::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(circle at top, var(--bg-accent), transparent 70%);
+                    opacity: 0;
+                    transition: opacity 0.4s;
+                }
+                .social-profile-card:hover::before { opacity: 1; }
+                .social-profile-card[data-brand="instagram"] { --bg-accent: rgba(225, 48, 108, 0.2); }
+                .social-profile-card[data-brand="facebook"] { --bg-accent: rgba(24, 119, 242, 0.2); }
+
+                /* Responsive Adjustments */
+                @media (max-width: 1024px) {
+                    .btc-grid { grid-template-columns: repeat(2, 1fr); }
+                    .btc-col-span-2 { grid-column: span 2; }
+                    .btc-card { min-height: 280px; }
+                }
+                @media (max-width: 768px) {
+                    .btc-grid { grid-template-columns: 1fr; }
+                    .btc-col-span-2 { grid-column: span 1; }
+                    .btc-traits-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+                    .social-profiles-flex { flex-direction: column; }
+                    .btc-card { min-height: 250px; }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .btc-card-inner, .btc-bg-img, #social-modal-overlay { transition: none !important; transform: none !important; }
+                    .btc-float { animation: none !important; }
+                }
+            </style>
+
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 10;">
+                
+                <!-- Section Header -->
+                <div class="text-center btc-reveal" style="margin-bottom: 4rem;">
+                    <p class="sys-status text-gradient-cyan" style="justify-content: center; margin-bottom: 10px;"><i data-lucide="user"></i> BEYOND THE CODE</p>
+                    <h2 class="hero-glitch-text" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">THE HUMAN <span class="text-gradient-violet">SIDE</span></h2>
+                    <p class="text-muted" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Curiosity, creativity, ancient wisdom, and continuous learning.</p>
+                </div>
+
+                <!-- BENTO GRID: Interests & Hobbies -->
+                <div class="btc-grid">
+                    
+                    <!-- 1. Mythology & Ancient Wisdom (Wide) -->
+                    <div class="btc-card btc-col-span-2 btc-reveal" data-tilt>
+                        <div class="btc-card-inner">
+                            <div class="btc-bg-wrapper">
+                                <img src="../assets/images/mahabharat.jpeg" class="btc-bg-img" alt="Ancient Architecture" onerror="this.src='https://images.unsplash.com/photo-1580130601254-0806a3cb3c20?auto=format&fit=crop&q=80&w=1000'">
+                                <div class="btc-overlay"></div>
+                            </div>
+                            <div class="btc-content">
+                                <div class="btc-icon-glass"><i data-lucide="book" class="text-gradient-violet" style="width: 24px; height: 24px;"></i></div>
+                                <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Mythology & Ancient Wisdom</h3>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.6; margin: 0; max-width: 90%;">Inspired by the Mahabharata. Drawing life lessons, strategic thinking, discipline, and profound philosophical perspectives from timeless ancient epics.</p>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- 2. Yoga & Inner Balance (Square) -->
+                    <div class="btc-card btc-reveal" data-tilt>
+                        <div class="btc-card-inner">
+                            <div class="btc-bg-wrapper">
+                                <img src="../assets/images/yoga-bg.jpg" class="btc-bg-img" alt="Yoga Balance" onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800'">
+                                <div class="btc-overlay"></div>
+                            </div>
+                            <div class="btc-content">
+                                <div class="btc-icon-glass"><i data-lucide="wind" class="text-gradient-cyan" style="width: 24px; height: 24px;"></i></div>
+                                <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Yoga & Balance</h3>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin: 0;">Strength begins with balance. Mindfulness, breathing exercises, and physical self-discipline.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Social Media Connect (Square - INTERACTIVE) -->
+                    <div class="btc-card btc-social-trigger btc-reveal" id="btn-open-socials" data-tilt>
+                        <div class="btc-card-inner">
+                            <div class="btc-content">
+                                <div class="btc-floating-icons">
+                                    <!-- Instagram SVG -->
+                                    <svg class="btc-float" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <defs>
+                                            <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+                                                <stop offset="0%" stop-color="#f09433"/>
+                                                <stop offset="25%" stop-color="#e6683c"/>
+                                                <stop offset="50%" stop-color="#dc2743"/>
+                                                <stop offset="75%" stop-color="#cc2366"/>
+                                                <stop offset="100%" stop-color="#bc1888"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                    <!-- Facebook SVG -->
+                                    <svg class="btc-float" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1877F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>
+                                    <svg class="btc-float" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0A66C2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+</svg>
+                                </div>
+                                <h3 class="text-gradient-cyan" style="font-size: 1.4rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Connect With Me</h3>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin: 0;">Beyond my professional world, let's connect. <br><span style="color: #00E5FF; font-size: 0.8rem; letter-spacing: 1px; display: inline-block; margin-top: 10px;">CLICK TO EXPAND <i data-lucide="arrow-right" style="width:12px; vertical-align:middle;"></i></span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Self-Learning (Square) -->
+                    <div class="btc-card btc-reveal" data-tilt>
+                        <div class="btc-card-inner">
+                            <div class="btc-bg-wrapper">
+                                <img src="../assets/images/learning-bg.jpg" class="btc-bg-img" alt="Self Learning Network" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800'">
+                                <div class="btc-overlay"></div>
+                            </div>
+                            <div class="btc-content">
+                                <div class="btc-icon-glass"><i data-lucide="lightbulb" style="color: #FBBF24; width: 24px; height: 24px;"></i></div>
+                                <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Self-Learning</h3>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin: 0;">Never stop being a student. Independently exploring unfamiliar domains.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Gaming & Strategic Thinking (Wide) -->
+                    <div class="btc-card btc-col-span-2 btc-reveal" data-tilt>
+                        <div class="btc-card-inner">
+                            <div class="btc-bg-wrapper">
+                                <img src="../assets/images/gaming-bg.jpg" class="btc-bg-img" alt="Gaming Setup" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1000'">
+                                <div class="btc-overlay" style="background: linear-gradient(to top, rgba(3,7,18,0.95) 10%, rgba(3,7,18,0.6) 60%, transparent);"></div>
+                            </div>
+                            <div class="btc-content">
+                                <div class="btc-icon-glass" style="border-color: rgba(139,92,246,0.3);"><i data-lucide="gamepad-2" class="text-gradient-violet" style="width: 24px; height: 24px;"></i></div>
+                                <h3 style="color: #fff; font-size: 1.8rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Strategic Thinking</h3>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.6; margin: 0; max-width: 90%;">A passion that extends into real-world problem solving. Navigating complex challenges, optimizing strategies, and thriving in dynamic puzzle environments.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- LIKES & DISLIKES PANELS -->
+                <div class="text-center btc-reveal" style="margin-bottom: 2.5rem;">
+                    <h3 style="font-family: var(--font-heading); color: #fff; font-size: 2rem;">THE LITTLE THINGS THAT DEFINE ME</h3>
+                </div>
+
+                <div class="btc-traits-grid">
+                    
+                    <!-- LIKES PANEL -->
+                    <div class="btc-trait-panel likes btc-reveal">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2rem;">
+                            <i data-lucide="heart" style="color: #10B981; width: 28px; height: 28px;"></i>
+                            <h4 style="font-size: 1.5rem; color: #fff; margin: 0; font-family: var(--font-heading);">What I Value (Likes)</h4>
+                        </div>
+                        <ul class="btc-trait-list">
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Learning something new.</li>
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Meaningful conversations.</li>
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Mythology and philosophical stories.</li>
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Yoga and personal discipline.</li>
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Creative filmmaking and cinematic editing.</li>
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Technology and innovation.</li>
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Exploring new ideas and places.</li>
+                            <li><i data-lucide="check-circle-2" style="color: #10B981; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Strategic games and challenges.</li>
+                        </ul>
+                    </div>
+
+                    <!-- DISLIKES PANEL -->
+                    <div class="btc-trait-panel dislikes btc-reveal">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2rem;">
+                            <i data-lucide="thumbs-down" style="color: #EF4444; width: 28px; height: 28px;"></i>
+                            <h4 style="font-size: 1.5rem; color: #fff; margin: 0; font-family: var(--font-heading);">What I Avoid (Dislikes)</h4>
+                        </div>
+                        <ul class="btc-trait-list">
+                            <li><i data-lucide="x-circle" style="color: #EF4444; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Procrastination.</li>
+                            <li><i data-lucide="x-circle" style="color: #EF4444; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Unnecessary negativity.</li>
+                            <li><i data-lucide="x-circle" style="color: #EF4444; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Dishonesty.</li>
+                            <li><i data-lucide="x-circle" style="color: #EF4444; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Superficial conversations.</li>
+                            <li><i data-lucide="x-circle" style="color: #EF4444; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Wasting valuable time.</li>
+                            <li><i data-lucide="x-circle" style="color: #EF4444; width: 20px; flex-shrink: 0; margin-top: 3px;"></i> Giving up without trying.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- PERSONAL PHILOSOPHY / SIGNATURE -->
+                <div class="btc-philosophy btc-reveal">
+                    <i data-lucide="quote" style="width: 40px; height: 40px; color: rgba(0,229,255,0.2); margin-bottom: 1.5rem;"></i>
+                    <h2 class="btc-quote">"I believe life is not just about building technology, but also about building character, discipline, curiosity, and perspective."</h2>
+                    <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #00E5FF, #8B5CF6); margin: 0 auto; border-radius: 2px;"></div>
+                </div>
+
+            </div>
+
+            <!-- SOCIAL MEDIA CINEMATIC MODAL OVERLAY -->
+            <div id="social-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="social-modal-title">
+                <div class="social-modal-content">
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
+                        <h2 id="social-modal-title" class="hero-glitch-text" style="font-size: 2.5rem; margin: 0;">LET'S <span class="text-gradient-cyan">CONNECT</span></h2>
+                        <button id="btn-close-socials" aria-label="Close" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s ease;">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
+
+                    <div class="social-profiles-flex">
                         
-                    </div>
-
-                    <!-- Expandable Technical Details (Hidden by default) -->
-                    <div class="career-details-expanded" id="careerDetails" style="display: none; height: 0; opacity: 0; overflow: hidden; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
-                        <h4 style="margin-bottom: 1rem; color: var(--primary-cyan); font-size: 1.2rem;">Technical Implementation Strategy</h4>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                            <div>
-                                <h5 style="color: #fff; margin-bottom: 0.5rem; display: flex; align-items: center;"><i data-lucide="shield-check" style="width: 16px; color: var(--violet-neon); margin-right: 5px;"></i> Architecture</h5>
-                                <p class="text-muted" style="font-size: 0.9rem;">Utilized the Grails MVC framework for rapid deployment and robust data separation.</p>
-                            </div>
-                            <div>
-                                <h5 style="color: #fff; margin-bottom: 0.5rem; display: flex; align-items: center;"><i data-lucide="lock" style="width: 16px; color: var(--violet-neon); margin-right: 5px;"></i> Validation</h5>
-                                <p class="text-muted" style="font-size: 0.9rem;">Implemented strict backend validation constraints to ensure absolute data integrity for sensitive personnel records.</p>
+                        <!-- Instagram Profile -->
+                        <div class="social-profile-card" data-brand="instagram">
+                            <div style="position: relative; z-index: 2;">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="url(#ig-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem;">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                                <h3 style="color: #fff; font-size: 1.6rem; font-family: var(--font-heading); margin-bottom: 0.5rem;">Instagram</h3>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">A visual diary. Photography, behind-the-scenes cinematic edits, and personal updates.</p>
+                                <a href="https://www.instagram.com/shobhandebadak" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: rgba(225, 48, 108, 0.2); border: 1px solid #E1306C; color: #fff; width: 100%; justify-content: center; padding: 0.8rem; border-radius: 8px; text-decoration: none; display: flex; gap: 10px; align-items: center; transition: all 0.3s;">
+                                    <i data-lucide="external-link" style="width: 16px;"></i> View Profile
+                                </a>
                             </div>
                         </div>
+
+                        <!-- Facebook Profile -->
+                        <div class="social-profile-card" data-brand="facebook">
+                            <div style="position: relative; z-index: 2;">
+                                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#1877F2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem;">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                                <h3 style="color: #fff; font-size: 1.6rem; font-family: var(--font-heading); margin-bottom: 0.5rem;">Facebook</h3>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">Connecting with friends, sharing major life milestones, thoughts, and community updates.</p>
+                                <a href="https://www.facebook.com/shobhandeb.adak" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: rgba(24, 119, 242, 0.2); border: 1px solid #1877F2; color: #fff; width: 100%; justify-content: center; padding: 0.8rem; border-radius: 8px; text-decoration: none; display: flex; gap: 10px; align-items: center; transition: all 0.3s;">
+                                    <i data-lucide="external-link" style="width: 16px;"></i> View Profile
+                                </a>
+                            </div>
+                        </div>
+                        <!-- LinkedIn Profile -->
+<div class="social-profile-card" data-brand="linkedin">
+    <div style="position: relative; z-index: 2;">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#0A66C2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem;">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+        <h3 style="color: #fff; font-size: 1.6rem; font-family: var(--font-heading); margin-bottom: 0.5rem;">LinkedIn</h3>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">Professional networking, project updates, deep tech research, and career milestones.</p>
+        <a href="https://www.linkedin.com/in/shobhandebadak/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: rgba(10, 102, 194, 0.2); border: 1px solid #0A66C2; color: #fff; width: 100%; justify-content: center; padding: 0.8rem; border-radius: 8px; text-decoration: none; display: flex; gap: 10px; align-items: center; transition: all 0.3s;">
+            <i data-lucide="external-link" style="width: 16px;"></i> View Profile
+        </a>
+    </div>
+</div>
+
                     </div>
-                    
                 </div>
             </div>
-        </section>
 
-        <!-- PHASE 8: Personal Life & Likings -->
-        <section id="scene-personal" class="cinematic-section" style="padding: 6rem 0; min-height: auto;">
-            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
-                
-                <div class="text-center" style="margin-bottom: 4rem;">
-                    <h2 class="hero-glitch-text" style="font-size: 3rem;">BEYOND THE <span class="text-gradient-cyan">CODE</span></h2>
-                    <p class="text-muted" style="font-size: 1.2rem;">The human side — curiosity, creativity, and continuous learning.</p>
-                </div>
-
-                <!-- Modern Bento Grid Layout -->
-                <div class="bento-grid">
+            <!-- SCOPED JAVASCRIPT FOR INTERACTIVITY -->
+            <script>
+                document.addEventListener("DOMContentLoaded", () => {
                     
-                    <!-- Bento Box 1: Creative Pursuits (Large) -->
-                    <div class="holo-card bento-item bento-large">
-                        <div class="bento-content">
-                            <i data-lucide="video" class="bento-icon text-cyan"></i>
-                            <h3 class="text-gradient-cyan" style="font-size: 2rem; margin-bottom: 1rem;">Cinematic Visuals & Design</h3>
-                            <p class="text-muted" style="font-size: 1.05rem; line-height: 1.7;">Passionate about video editing, motion graphics, and digital visual creation. From crafting custom logos, phone wallpapers, and posters to producing audio-synced cinematic title sequences for short films (like the psychological thriller <em>"ATTACHED"</em>).</p>
-                            <div class="tech-tags mt-2">
-                                <span>Motion Graphics</span><span>Video Editing</span><span>Graphic Design</span>
-                            </div>
-                        </div>
-                    </div>
+                    // --- 1. 3D Hover Tilt Effect for Bento Cards (Vanilla JS) ---
+                    // Respects prefers-reduced-motion
+                    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    if (!prefersReducedMotion) {
+                        const cards = document.querySelectorAll('.btc-card[data-tilt]');
+                        cards.forEach(card => {
+                            const inner = card.querySelector('.btc-card-inner');
+                            card.addEventListener('mousemove', e => {
+                                const rect = card.getBoundingClientRect();
+                                const x = e.clientX - rect.left; // x position within the element
+                                const y = e.clientY - rect.top;  // y position within the element
+                                const centerX = rect.width / 2;
+                                const centerY = rect.height / 2;
+                                
+                                // Calculate rotation (max 6 degrees for subtle elegance)
+                                const rotateX = ((y - centerY) / centerY) * -6; 
+                                const rotateY = ((x - centerX) / centerX) * 6;
+                                
+                                inner.style.transform = `translateZ(0px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                            });
+                            
+                            card.addEventListener('mouseleave', () => {
+                                inner.style.transform = `translateZ(0px) rotateX(0deg) rotateY(0deg)`;
+                            });
+                        });
+                    }
 
-                    <!-- Bento Box 2: Deep Tech -->
-                    <div class="holo-card bento-item">
-                        <div class="bento-content">
-                            <i data-lucide="network" class="bento-icon text-violet"></i>
-                            <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">Deep Tech Research</h3>
-                            <p class="text-muted" style="font-size: 0.95rem;">Exploring AI architectures, Hebbian learning rules, Neural Networks, NLP tokenization workflows, and signal processing mechanisms.</p>
-                        </div>
-                    </div>
+                    // --- 2. Cinematic Social Modal Logic ---
+                    const btnOpenSocials = document.getElementById('btn-open-socials');
+                    const btnCloseSocials = document.getElementById('btn-close-socials');
+                    const socialModal = document.getElementById('social-modal-overlay');
+                    let scrollPos = 0;
 
-                    <!-- Bento Box 3: Pedagogy -->
-                    <div class="holo-card bento-item">
-                        <div class="bento-content">
-                            <i data-lucide="book-open" class="bento-icon" style="color: var(--primary-blue);"></i>
-                            <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 0.5rem;">Pedagogy & Education</h3>
-                            <p class="text-muted" style="font-size: 0.95rem;">Crafting custom examination modules and revision study guides to make complex concepts intuitive for young minds.</p>
-                        </div>
-                    </div>
+                    const openSocials = () => {
+                        scrollPos = window.scrollY;
+                        socialModal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling while open
+                        
+                        // Small bounce effect on close button
+                        btnCloseSocials.style.transform = 'scale(0.8) rotate(-90deg)';
+                        setTimeout(() => { btnCloseSocials.style.transform = 'scale(1) rotate(0deg)'; }, 300);
+                    };
 
-                    <!-- Bento Box 4: The Linux Workflow (Wide) -->
-                    <div class="holo-card bento-item bento-wide">
-                        <div class="bento-content" style="display: flex; gap: 2rem; align-items: center; justify-content: space-between;">
-                            <div style="flex: 1;">
-                                <h3 class="text-gradient-violet" style="font-size: 1.8rem; margin-bottom: 0.5rem;">The Linux Environment</h3>
-                                <p class="text-muted" style="font-size: 1rem; line-height: 1.6;">I thrive in a terminal-driven Linux Mint workspace. Clean code, zero-dependency implementations, static architectures, and open-source tooling define my daily engineering philosophy.</p>
-                            </div>
-                            <div class="bento-icon-large" style="display: flex; justify-content: center; align-items: center; padding: 1rem;">
-                                <i data-lucide="terminal" style="width: 80px; height: 80px; color: rgba(139, 92, 246, 0.3);"></i>
-                            </div>
-                        </div>
-                    </div>
+                    const closeSocials = () => {
+                        socialModal.classList.remove('active');
+                        document.body.style.overflow = ''; // Restore scrolling
+                    };
 
-                </div>
-            </div>
+                    btnOpenSocials.addEventListener('click', openSocials);
+                    btnCloseSocials.addEventListener('click', closeSocials);
+                    
+                    // Close on clicking outside the modal content or pressing Escape
+                    socialModal.addEventListener('click', (e) => {
+                        if(e.target === socialModal) closeSocials();
+                    });
+                    document.addEventListener('keydown', (e) => {
+                        if(e.key === 'Escape' && socialModal.classList.contains('active')) closeSocials();
+                    });
+
+                    // --- 3. Scroll Reveal Animations (Using GSAP if available, fallback to IntersectionObserver) ---
+                    const revealElements = document.querySelectorAll('.btc-reveal');
+                    
+                    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                        // Advanced GSAP Setup
+                        revealElements.forEach((el, i) => {
+                            gsap.fromTo(el, 
+                                { y: 60, opacity: 0 }, 
+                                {
+                                    y: 0, 
+                                    opacity: 1, 
+                                    duration: 0.8, 
+                                    ease: "power3.out",
+                                    scrollTrigger: {
+                                        trigger: el,
+                                        start: "top 85%",
+                                        toggleActions: "play none none reverse"
+                                    }
+                                }
+                            );
+                        });
+                    } else {
+                        // Vanilla JS Fallback Observer
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if(entry.isIntersecting) {
+                                    entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                                    entry.target.style.opacity = '1';
+                                    entry.target.style.transform = 'translateY(0)';
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.1 });
+                        
+                        revealElements.forEach(el => {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(40px)';
+                            observer.observe(el);
+                        });
+                    }
+                    
+                    // Re-initialize lucide icons for new dynamically injected icons
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                });
+            </script>
         </section>
 
-        <!-- PHASE 9: Achievements & Gallery -->
-        <section id="scene-gallery" class="cinematic-section" style="padding: 6rem 0; min-height: auto; position: relative;">
-            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
-                
-                <div class="text-center" style="margin-bottom: 4rem;">
+       <!-- PHASE 10: Infinite Auto-Scrolling Visual Archive -->
+        <section id="scene-gallery" class="cinematic-section" style="padding: 6rem 0; min-height: auto; position: relative; overflow: hidden; background: var(--cinematic-bg-main);">
+            
+            <div class="section-container" style="max-width: 1280px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 10;">
+                <div class="text-center" style="margin-bottom: 3rem;">
                     <h2 class="hero-glitch-text" style="font-size: 3rem;">VISUAL <span class="text-gradient-violet">ARCHIVE</span></h2>
                     <p class="text-muted" style="font-size: 1.2rem;">Milestones, achievements, and cinematic moments.</p>
                 </div>
-
-                <!-- Cinematic Gallery Grid -->
-                <div class="gallery-grid">
-                    
-                    <!-- Gallery Item 1: Wide -->
-                    <div class="holo-card gallery-item gallery-wide">
-                        <img src="../assets/images/gallery-1.jpg" alt="VECC Internship" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000'">
-                        <div class="gallery-overlay">
-                            <h3 class="text-gradient-cyan">VECC Internship</h3>
-                            <p>Department of Atomic Energy</p>
-                            <i data-lucide="maximize-2" class="zoom-icon"></i>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Item 2: Standard -->
-                    <div class="holo-card gallery-item">
-                        <img src="../assets/images/gallery-2.jpg" alt="Attached Short Film" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=800'">
-                        <div class="gallery-overlay">
-                            <h3 class="text-gradient-violet">ATTACHED</h3>
-                            <p>Cinematic Titles & Visuals</p>
-                            <i data-lucide="maximize-2" class="zoom-icon"></i>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Item 3: Tall -->
-                    <div class="holo-card gallery-item gallery-tall">
-                        <img src="../assets/images/gallery-3.jpg" alt="JGEC Engineering" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800'">
-                        <div class="gallery-overlay">
-                            <h3 class="text-gradient-cyan">JGEC B.Tech</h3>
-                            <p>Academic Excellence</p>
-                            <i data-lucide="maximize-2" class="zoom-icon"></i>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Item 4: Standard -->
-                    <div class="holo-card gallery-item">
-                        <img src="../assets/images/gallery-4.jpg" alt="Diploma Achievement" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1589330694653-0618ce546875?auto=format&fit=crop&q=80&w=800'">
-                        <div class="gallery-overlay">
-                            <h3 style="color: #fff;">Diploma CSE</h3>
-                            <p>Successful Completion</p>
-                            <i data-lucide="maximize-2" class="zoom-icon"></i>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Item 5: Wide -->
-                    <div class="holo-card gallery-item gallery-wide">
-                        <img src="../assets/images/gallery-5.jpg" alt="Neural Networks" class="gallery-img" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000'">
-                        <div class="gallery-overlay">
-                            <h3 class="text-gradient-violet">AI & Deep Tech</h3>
-                            <p>Neural Network Explorations</p>
-                            <i data-lucide="maximize-2" class="zoom-icon"></i>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
-            <!-- Fullscreen Lightbox Overlay (Hidden by default) -->
+            <!-- CSS for Infinite Scroll -->
+            <style>
+                .scroll-gallery-wrapper {
+                    position: relative;
+                    width: 100vw;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.5rem;
+                }
+                
+                /* Gradient edges to fade the gallery into the background */
+                .gallery-fade {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    width: 15vw;
+                    z-index: 5;
+                    pointer-events: none;
+                }
+                .gallery-fade-left { left: 0; background: linear-gradient(to right, rgba(3,7,18,1), transparent); }
+                .gallery-fade-right { right: 0; background: linear-gradient(to left, rgba(3,7,18,1), transparent); }
+
+                /* The Track */
+                .scroll-track {
+                    display: flex;
+                    width: max-content;
+                    gap: 1.5rem;
+                }
+
+                /* Animation Definitions */
+                .track-left { animation: scrollLeft 45s linear infinite; }
+                .track-right { animation: scrollRight 40s linear infinite; }
+                
+                /* Pause on hover */
+                .scroll-track:hover { animation-play-state: paused; }
+
+                @keyframes scrollLeft {
+                    from { transform: translateX(0); }
+                    to { transform: translateX(calc(-50% - 0.75rem)); }
+                }
+                @keyframes scrollRight {
+                    from { transform: translateX(calc(-50% - 0.75rem)); }
+                    to { transform: translateX(0); }
+                }
+
+                /* Individual Image Items */
+                .scroll-item {
+                    width: 320px;
+                    height: 220px;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    position: relative;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    cursor: pointer;
+                    flex-shrink: 0;
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    background: rgba(3, 7, 18, 0.6);
+                }
+                .scroll-item:hover {
+                    border-color: rgba(0, 229, 255, 0.5);
+                    box-shadow: 0 10px 40px rgba(0, 229, 255, 0.2);
+                    transform: translateY(-5px);
+                    z-index: 10;
+                }
+
+                /* Image Styling */
+                .scroll-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+                    filter: brightness(0.6) grayscale(0.3);
+                }
+                .scroll-item:hover .scroll-img {
+                    transform: scale(1.1);
+                    filter: brightness(1.1) grayscale(0);
+                }
+
+                /* Icon Overlay */
+                .scroll-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(circle at center, transparent 30%, rgba(3,7,18,0.8) 100%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                }
+                .scroll-item:hover .scroll-overlay {
+                    opacity: 1;
+                }
+                .scroll-icon {
+                    background: rgba(0, 0, 0, 0.5);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #fff;
+                    transform: scale(0.5);
+                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                .scroll-item:hover .scroll-icon {
+                    transform: scale(1);
+                }
+
+                @media(max-width: 768px) {
+                    .scroll-item { width: 260px; height: 180px; }
+                    .scroll-img { filter: brightness(0.8) grayscale(0.1); }
+                }
+            </style>
+
+            <div class="scroll-gallery-wrapper">
+                
+                <!-- Left/Right Fades -->
+                <div class="gallery-fade gallery-fade-left"></div>
+                <div class="gallery-fade gallery-fade-right"></div>
+
+                <!-- ROW 1: Scrolling Left -->
+                <div class="scroll-track track-left">
+                    <!-- Original Set -->
+                    <div class="scroll-item">
+                        <img src="../assets/images/vecc.jpg" alt="VECC Internship" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/shristipart2.jpeg" alt="Attached Short Film" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/idCard.jpeg" alt="JGEC Engineering" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/timbertrust-bonolota.jpg" alt="Timber Trust" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    
+                    <!-- Duplicated Set (Required for infinite seamless looping) -->
+                    <div class="scroll-item">
+                        <img src="../assets/images/me.jpeg" alt="VECC Internship" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/teacher'sday.jpeg" alt="Attached Short Film" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/leaderboard.jpeg" alt="JGEC Engineering" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/chattisgarh.jpeg" alt="Timber Trust" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                </div>
+
+                <!-- ROW 2: Scrolling Right -->
+                <div class="scroll-track track-right">
+                    <!-- Original Set -->
+                    <div class="scroll-item">
+                        <img src="../assets/images/groupphoto.jpeg" alt="IIIT Naya Raipur Training" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/drdoSir.jpeg" alt="AI & Supply Chain" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/farewell.jpeg" alt="IEEE Certificate" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/iiitgroup.jpeg" alt="Certifications" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+
+                    <!-- Duplicated Set (Required for infinite seamless looping) -->
+                    <div class="scroll-item">
+                        <img src="../assets/images/mydrawing.jpeg" alt="IIIT Naya Raipur Training" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/bitkelbangali.jpeg" alt="AI & Supply Chain" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/mystudent.jpeg" alt="IEEE Certificate" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="../assets/images/drone.jpeg" alt="Certifications" class="scroll-img gallery-img" onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600'">
+                        <div class="scroll-overlay"><div class="scroll-icon"><i data-lucide="maximize-2"></i></div></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Fullscreen Lightbox Overlay (Works with the exact same JS because images have .gallery-img class) -->
             <div id="galleryLightbox" class="lightbox">
                 <button id="closeLightbox" class="lightbox-close"><i data-lucide="x"></i></button>
                 <div class="lightbox-content">
@@ -603,7 +1451,30 @@
 
     </main>
 
-    <!-- FOOTER (From existing architecture) -->
+
+    <!-- CINEMATIC CRASH / COMEBACK OVERLAY -->
+    <div id="comeback-cinematic" role="dialog" aria-modal="true" aria-label="A cinematic reminder to keep moving forward">
+        <div class="cin-backdrop"></div><div class="cin-grid"></div>
+        <div class="cin-explosion"></div><div class="cin-smoke"></div><div class="cin-flash"></div>
+        <div class="cin-car-shape" aria-hidden="true"></div>
+        <div class="cin-person" aria-hidden="true">
+            <div class="person-head"></div><div class="person-hair"></div><div class="person-glasses"></div>
+            <div class="person-body"></div><div class="person-arm left"></div><div class="person-arm right"></div>
+            <div class="person-leg left"></div><div class="person-leg right"></div>
+        </div>
+        <div class="cin-copy">
+            <div class="cin-kicker">A MOMENT THAT DEFINES THE JOURNEY</div>
+            <h2 class="cin-title">THE ROAD CAN BREAK.<br><span style="color:#00e5ff">YOU DON'T HAVE TO.</span></h2>
+            <p class="cin-quote">Life won't always go according to plan. Sometimes the unexpected hits hard. Let the accidents happen, learn from the impact, and rise again. Keep your promise to yourself.</p>
+        </div>
+        <div class="cin-vignette"></div>
+        <div class="cin-controls">
+            <button type="button" id="cinematic-replay">Replay scene</button>
+            <button type="button" id="cinematic-exit">Return to journey ✕</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="footer" style="position: relative; z-index: 10; background: rgba(3, 7, 18, 0.95); padding: 4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
         <div class="footer-container" style="max-width: 1280px; margin: 0 auto;">
             <div class="footer-bottom" style="border-top: none;">
@@ -613,9 +1484,6 @@
         </div>
     </footer>
 
-    <!-- =========================================
-         ADVANCED LIBRARIES (Loaded via CDN)
-         ========================================= -->
     <!-- GSAP for Advanced Scroll Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -628,8 +1496,67 @@
     <script src="../js/about-motion.js"></script> 
     <script src="../js/about-3d.js"></script>
 
-    <!-- Train auto-start controller: starts the existing train engine when its scene is visible -->
+    <!-- Train auto-start controller -->
     <script src="../js/train-auto-start.js" defer></script> 
+
+    <script>
+    (() => {
+        const trigger = document.getElementById('btn-comeback-cinematic');
+        const overlay = document.getElementById('comeback-cinematic');
+        const replay = document.getElementById('cinematic-replay');
+        const exit = document.getElementById('cinematic-exit');
+        if (!trigger || !overlay) return;
+
+        let timers = [];
+        let previousOverflow = '';
+        const clearSequence = () => {
+            timers.forEach(clearTimeout);
+            timers = [];
+        };
+        const schedule = (fn, delay) => timers.push(setTimeout(fn, delay));
+
+        function playSequence() {
+            clearSequence();
+            overlay.classList.remove('explode', 'reveal');
+            overlay.classList.add('active');
+            previousOverflow = document.body.style.overflow;
+            document.body.style.overflow = 'hidden';
+
+            // Give the audience a beat of darkness before the impact.
+            schedule(() => overlay.classList.add('explode'), 850);
+            // Let the smoke settle, then reveal the person standing strong.
+            schedule(() => overlay.classList.add('reveal'), 3000);
+            schedule(() => {
+                const quote = overlay.querySelector('.cin-quote');
+                if (quote && 'speechSynthesis' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    window.speechSynthesis.cancel();
+                    const speech = new SpeechSynthesisUtterance(
+                        "Life won't always go according to plan. Let the unexpected happen. Learn from the impact, rise again, and keep your promise to yourself. Your destination is still waiting."
+                    );
+                    speech.rate = 0.92;
+                    speech.pitch = 0.88;
+                    speech.volume = 0.9;
+                    window.speechSynthesis.speak(speech);
+                }
+            }, 4300);
+        }
+
+        function closeSequence() {
+            clearSequence();
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            overlay.classList.remove('active', 'explode', 'reveal');
+            document.body.style.overflow = previousOverflow;
+        }
+
+        trigger.addEventListener('click', playSequence);
+        replay && replay.addEventListener('click', playSequence);
+        exit && exit.addEventListener('click', closeSequence);
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && overlay.classList.contains('active')) closeSequence();
+        });
+    })();
+    </script>
+
     <script>lucide.createIcons();</script>
 </body>
 </html>

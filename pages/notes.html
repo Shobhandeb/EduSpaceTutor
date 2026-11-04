@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Notes Repository | Learn with Shobhandeb</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/about-advanced.css">
+</head>
+<body class="about-cinematic" style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar" style="background: rgba(3, 7, 18, 0.8); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px);">
+        <div class="nav-container" style="max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;">
+            <a href="../index.html" class="nav-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <i data-lucide="hexagon" style="color: var(--cyan-glow);"></i>
+                <span class="brand-text" style="font-family: var(--font-heading); color: #fff; font-weight: 700;">PAKHIR <span style="color: var(--cyan-glow);">CHOKH</span></span>
+            </a>
+            <div class="nav-links" style="display: flex; gap: 2rem;">
+                <a href="../index.html" class="nav-link" style="color: var(--text-muted); text-decoration: none;">Home</a>
+                <a href="about.html" class="nav-link" style="color: var(--text-muted); text-decoration: none;">About</a>
+                <a href="notes.html" class="nav-link active" style="color: var(--cyan-glow); text-decoration: none; font-weight: 600;">Notes</a>
+                <a href="contact.html" class="nav-link" style="color: var(--text-muted); text-decoration: none;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN REPOSITORY SECTION -->
+    <main style="flex: 1; padding: 4rem 2rem; max-width: 1280px; margin: 0 auto; width: 100%;">
+        
+        <div class="text-center" style="margin-bottom: 3rem;">
+            <p class="sys-status text-gradient-cyan" style="justify-content: center;"><i data-lucide="book-open" style="width:16px;"></i> SECURE ACADEMIC VAULT</p>
+            <h1 class="hero-glitch-text" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">STUDY <span class="text-gradient-cyan">NOTES & GUIDES</span></h1>
+            <p class="text-muted" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Access free public study materials or enter your batch passcode to unlock premium examination modules.</p>
+        </div>
+
+        <!-- Notes Grid (10 PDFs) -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+            
+            <!-- PDF 1: Math (Free - Cyan) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); color: var(--cyan-glow); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASSES 10</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Computer Vision: Suggestion Questions</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">suggestion question based on computer vision chapter, you can prepare for exams. </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 177.8kB</span>
+                    </div>
+                    <a href="../assets/notes/CV suggestion question.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--cyan-glow); color: var(--cyan-glow); padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF 2: CS (Free - Violet) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); color: var(--violet-neon); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">COMPUTER SCIENCE</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Convulational Neural Network Class Notes</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">A very special pdf that will clear 99% doubt about what is cnn? How computers understand image ? </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 10.7 MB</span>
+                    </div>
+                    <a href="../assets/notes/CNN_computer-1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(139, 92, 246, 0.15); border: 1px solid var(--violet-neon); color: var(--violet-neon); padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF 3: Math Premium (Locked - Red) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(239, 68, 68, 0.2);">
+                <div class="card-glow-accent" style="background: #EF4444; box-shadow: 0 0 10px #EF4444;"></div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #EF4444; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">PREMIUM BATCH</span>
+                        <span style="color: #EF4444; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;"><i data-lucide="lock" style="width: 14px;"></i> Locked</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Trigonometry: Master Concepts</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Advanced identity proofs, height and distance problems, and exclusive Class 10 mock test papers.</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 3.2 MB</span>
+                    </div>
+                    <button onclick="unlockNote('trig-master', '../assets/notes/trigonometry.pdf', 'MATH2026')" class="btn" style="width: 100%; background: rgba(239, 68, 68, 0.15); border: 1px solid #EF4444; color: #EF4444; padding: 0.75rem; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="key" style="width: 16px;"></i> Unlock with Passcode
+                    </button>
+                </div>
+            </div>
+
+            <!-- PDF 4: Science (Free - Green) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">AI</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">AI CLASS Test Questions</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Check your knowledge with the questions , practise it </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 134.6kB</span>
+                    </div>
+                    <a href="../assets/notes/Subject_ Artificial Intelligence (417)-1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF 5: CS (Free - Violet) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); color: var(--violet-neon); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">COMPUTER SCIENCE</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Mock Questions on Machine Learning</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">An introduction to structuring web pages and styling them. Perfect for complete beginners.</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 170.1 kB</span>
+                    </div>
+                    <a href="../assets/notes/MockPaper-1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(139, 92, 246, 0.15); border: 1px solid var(--violet-neon); color: var(--violet-neon); padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF 6: Science Premium (Locked - Red) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(239, 68, 68, 0.2);">
+                <div class="card-glow-accent" style="background: #EF4444; box-shadow: 0 0 10px #EF4444;"></div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #EF4444; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">PREMIUM BATCH</span>
+                        <span style="color: #EF4444; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;"><i data-lucide="lock" style="width: 14px;"></i> Locked</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Chemistry: The Periodic Table</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">In-depth analysis of trends, atomic mass, valency shortcuts, and exam-focused Q&A.</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 2.9 MB</span>
+                    </div>
+                    <button onclick="unlockNote('chem-periodic', '../assets/notes/chemistry.pdf', 'CHEM2026')" class="btn" style="width: 100%; background: rgba(239, 68, 68, 0.15); border: 1px solid #EF4444; color: #EF4444; padding: 0.75rem; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="key" style="width: 16px;"></i> Unlock with Passcode
+                    </button>
+                </div>
+            </div>
+
+            <!-- PDF 7: Math (Free - Cyan) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); color: var(--cyan-glow); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASSES 9</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Statistics  & Artificial Intelligence</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Step-by-step breakdown of statistics identities,and it's use in computer.</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 47.9 KB</span>
+                    </div>
+                    <a href="../assets/notes/Statistical_data_questions.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--cyan-glow); color: var(--cyan-glow); padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+            <!-- PDF 8: Science (Free - Green) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Programming</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Python Programming and Annaconda Overview</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Some of the important sample questions and answers </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 26.4 KB</span>
+                    </div>
+                    <a href="../assets/notes/Python_Question_Paper-1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+                        <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); color: var(--cyan-glow); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASSES 9</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Model Evaluation  & Artificial Intelligence</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Step-by-step breakdown of model Evaluation ,and it's deployment .</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 47.9 KB</span>
+                    </div>
+                    <a href="../assets/notes/model_evaluation_question_paper-1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--cyan-glow); color: var(--cyan-glow); padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+               <!-- PDF 8: Science (Free - Green) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Programming</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;"> Annaconda Interface</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Learn about python annaconda , it's an interesting concept </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 26.4 KB</span>
+                    </div>
+                    <a href="../assets/notes/anacondaPYthon.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+             <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.3); color: var(--cyan-glow); padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">PROGRAMMING</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">PYTHON PRACTICAL QUESTIONS 1 </h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Python practise practical questions and suggestion.</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 91.9 KB</span>
+                    </div>
+                    <a href="../assets/notes/pythonClassNote1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(0, 229, 255, 0.15); border: 1px solid var(--cyan-glow); color: var(--cyan-glow); padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+
+
+             <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASS 9</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;"> AI Full suggestion</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Strong your Class 9 computer preparation by practising these questions</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 103.4 KB</span>
+                    </div>
+                    <a href="../assets/notes/aIX-1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+       <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASS 9</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;"> AI Suggestion Questions</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Strong your Class 9 computer preparation by practising these questions</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 115.4 KB</span>
+                    </div>
+                    <a href="../assets/notes/suggestion2.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+
+
+                   <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASS 9</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;"> GENERATIVE AI chapter</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Generative AI suggestion questions</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 26.0 KB</span>
+                    </div>
+                    <a href="../assets/notes/aIX-1.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+
+
+
+
+
+<div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASS 9</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;"> Data Literacy suggestion questions</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Data Literacy chapter suggestion questions </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 26.0 KB</span>
+                    </div>
+                    <a href="../assets/notes/Data LIteracy - Google Docs.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">CLASS 9</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Python Class IX suggestion questions</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Data Literacy chapter suggestion questions </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 102.4 KB</span>
+                    </div>
+                    <a href="../assets/notes/python_assignment.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">Advanced</span>
+                        <span style="color: var(--text-muted); font-size: 0.85rem;"><i data-lucide="unlock" style="width: 14px; color: #10B981;"></i> Free Access</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Advanced Python Notes</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Advanced python handwritten notes </p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 7.4 MB</span>
+                    </div>
+                    <a href="../assets/notes/my handwritten notes.pdf" target="_blank" class="btn btn-primary" style="width: 100%; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; padding: 0.75rem; border-radius: 8px; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="download" style="width: 16px;"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <!-- PDF 9: CS Premium (Locked - Red) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(239, 68, 68, 0.2);">
+                <div class="card-glow-accent" style="background: #EF4444; box-shadow: 0 0 10px #EF4444;"></div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #EF4444; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">EXCLUSIVES</span>
+                        <span style="color: #EF4444; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;"><i data-lucide="lock" style="width: 14px;"></i> Locked</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Vanilla JavaScript Logic Building</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Advanced document object model manipulation, loops, and building interactive web elements from scratch.</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 3.8 MB</span>
+                    </div>
+                    <button onclick="unlockNote('js-logic', '../assets/notes/js-logic.pdf', 'CODE2026')" class="btn" style="width: 100%; background: rgba(239, 68, 68, 0.15); border: 1px solid #EF4444; color: #EF4444; padding: 0.75rem; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="key" style="width: 16px;"></i> Unlock with Passcode
+                    </button>
+                </div>
+            </div>
+
+            <!-- PDF 10: Deep Tech Premium (Locked - Red) -->
+            <div class="holo-card" style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(239, 68, 68, 0.2);">
+                <div class="card-glow-accent" style="background: #EF4444; box-shadow: 0 0 10px #EF4444;"></div>
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #EF4444; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600;">EXCLUSIVES</span>
+                        <span style="color: #EF4444; font-size: 0.85rem; display: flex; align-items: center; gap: 4px;"><i data-lucide="lock" style="width: 14px;"></i> Locked</span>
+                    </div>
+                    <h3 style="color: #fff; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.5rem;">Advanced AI & Neural Networks Primer</h3>
+                    <p class="text-muted" style="font-size: 0.95rem; margin-bottom: 1.5rem;">Exclusive deep-dive notes covering perceptrons, backpropagation, and introductory PyTorch workflows.</p>
+                </div>
+                <div>
+                    <div style="display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        <span><i data-lucide="file-text" style="width: 14px;"></i> PDF</span>
+                        <span>•</span>
+                        <span><i data-lucide="hard-drive" style="width: 14px;"></i> 8.5 MB</span>
+                    </div>
+                    <button onclick="unlockNote('ai-primer', '../assets/notes/ai-primer.pdf', 'SHOBHANDEB2026')" class="btn" style="width: 100%; background: rgba(239, 68, 68, 0.15); border: 1px solid #EF4444; color: #EF4444; padding: 0.75rem; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; transition: all 0.3s ease;">
+                        <i data-lucide="key" style="width: 16px;"></i> Unlock with Passcode
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: rgba(3, 7, 18, 0.95); padding: 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Learn with Shobhandeb | Jalpaiguri, West Bengal.</p>
+    </footer>
+
+    <!-- JavaScript for Passcode Verification -->
+    <script>
+        function unlockNote(noteId, pdfUrl, correctCode) {
+            const userCode = prompt("Enter the access passcode provided during your tuition session:");
+            if (userCode === null) return; // User cancelled
+            
+            if (userCode.trim() === correctCode) {
+                alert("Access Granted! Opening your secure document.");
+                window.open(pdfUrl, '_blank');
+            } else {
+                alert("Incorrect passcode. Please contact Shobhandeb for access credentials.");
+            }
+        }
+    </script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

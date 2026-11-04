@@ -3,7 +3,7 @@
    Specific to the About Page (Scoped to .about-cinematic)
    ========================================================= */
 
-   /* =========================================================
+/* =========================================================
    PHASE 2: CINEMATIC DESIGN FOUNDATION
    ========================================================= */
 :root {
@@ -373,47 +373,41 @@ body.about-cinematic::after {
     100% { top: 20px; opacity: 0; }
 }
 
-/* =========================================
-   PHASE 4: ACADEMIC TIMELINE
-   ========================================= */
+/* 1. Ensure the container holds the line properly */
 .timeline-advanced {
     position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
     padding: 2rem 0;
-    /* Prevents line from extending too far down */
-    padding-bottom: 4rem; 
-}
-
-/* Central Line */
-.timeline-line {
-    position: absolute;
-    top: 2rem; /* Starts precisely at the first node */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px; 
-    height: calc(100% - 6rem); /* Stops right at the last node */
-    background: rgba(255, 255, 255, 0.05);
+    margin: 0 auto;
     z-index: 1;
 }
 
-.timeline-progress {
+/* 2. The Background Track (Faded line) */
+.timeline-line {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 0%; 
-    background: linear-gradient(to bottom, var(--cyan-glow), var(--violet-neon));
-    box-shadow: 0 0 15px var(--cyan-glow);
+    top: 0;
+    bottom: 0; /* Stretches the line all the way to the bottom node */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    z-index: 0;
 }
 
-/* Timeline Nodes */
+/* 3. The Cinematic Progress Beam */
+.timeline-progress {
+    width: 100%;
+    height: 0%; /* Your GSAP JavaScript changes this from 0% to 100% on scroll */
+    background: linear-gradient(180deg, transparent, #00E5FF, #8B5CF6);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6), 0 0 30px rgba(139, 92, 246, 0.4);
+    border-radius: 4px;
+}
+
 .timeline-node {
     position: relative;
-    width: 50%;
-    padding: 2rem 0;
     z-index: 2;
-    opacity: 0; 
+    width: 45%; /* Keeps cards strictly on the left/right */
 }
-
 .left-node {
     left: 0;
     padding-right: 4rem;
@@ -499,7 +493,6 @@ body.about-cinematic::after {
 
 /* Mobile Responsive Timeline */
 @media (max-width: 992px) {
-    .timeline-line { left: 30px; height: calc(100% - 4rem); }
     .timeline-node { width: 100%; left: 0 !important; padding: 2rem 0 2rem 70px !important; }
     .left-node { padding-right: 0; }
     .right-node { padding-left: 70px; }
@@ -1023,7 +1016,6 @@ html {
 
     /* Timeline */
     .timeline-advanced { padding-left: 10px; }
-    .timeline-line { left: 20px; height: calc(100% - 4rem); }
     .timeline-node { width: 100%; left: 0 !important; padding: 1.5rem 0 1.5rem 50px !important; }
     .left-node .node-marker, .right-node .node-marker { left: 8px !important; right: auto !important; }
 
@@ -1083,6 +1075,7 @@ html {
     .timeline-title { font-size: 1.2rem !important; }
     .timeline-card { padding: 1.5rem; }
 }
+
 /* =========================================
    PERSISTENT JOURNEY TRAIN & INTRO CONTROLS
    ========================================= */
@@ -1168,6 +1161,7 @@ html {
     #persistent-train-progress { display: none; }
     .car-hud-container { flex-direction: column; align-items: stretch !important; gap: 1rem; }
 }
+
 /* =========================================
    PHASE 8: TECHNICAL SKILLS MATRIX
    ========================================= */
@@ -1235,4 +1229,50 @@ html {
 .violet-node {
     background: var(--violet-neon);
     color: var(--violet-neon);
+}
+
+/* =========================================================
+   DESKTOP TIMELINE DOT ALIGNMENT FIX V2
+   ========================================================= */
+@media (min-width: 769px) {
+    /* 1. Turn the container into a column flexbox */
+    .timeline-advanced {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* 2. Lock the line perfectly in the center */
+    .timeline-line {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+    
+    /* 3. Strip all old spacing rules and set exact width (50% minus a 3rem gap) */
+    .timeline-node {
+        width: calc(50% - 3rem) !important;
+        position: relative !important;
+        left: auto !important; 
+        right: auto !important;
+        padding: 0 !important; /* Kills the old padding bug */
+    }
+    
+    /* 4. Push left cards to the left edge, right cards to the right edge */
+    .left-node {
+        align-self: flex-start !important;
+    }
+    .right-node {
+        align-self: flex-end !important;
+    }
+    
+    /* 5. Throw the dots exactly 3rem across the empty gap to hit the center line */
+    .left-node .node-marker {
+        right: -3rem !important;
+        left: auto !important;
+        transform: translateX(50%) !important;
+    }
+    .right-node .node-marker {
+        left: -3rem !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+    }
 }

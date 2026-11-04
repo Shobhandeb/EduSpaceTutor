@@ -115,21 +115,36 @@
     </div>
 
     <!-- DASHBOARD NAVBAR -->
-    <nav class="navbar" style="position: sticky;">
+ <nav class="navbar">
         <div class="nav-container">
+            <!-- Brand Logo -->
             <a href="../index.html" class="nav-brand">
-                <i data-lucide="hexagon" class="brand-icon"></i>
-                <span class="brand-text">EDU <span class="text-glow-cyan">SPACE</span></span>
+                <i data-lucide="eye" class="brand-icon"></i>
+                <span class="brand-text">PAKSHIR <span class="text-glow-cyan">CHOKH</span></span>
             </a>
-            
+
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="./index.html" class="nav-link active">Home</a>
+                <a href="pages/about.html" class="nav-link">About</a>
+                <a href="pages/courses.html" class="nav-link">Courses</a>
+                <a href="pages/contact.html" class="nav-link">Contact</a>
+                <a href="pages/notes.html" class="nav-link">Notes</a>
+            </div>
+
+            <!-- Login Button & Mobile Menu Toggle -->
             <div class="nav-actions">
-                <span id="userGreeting" class="text-muted" style="margin-right: 15px; font-weight: 500;"></span>
-                <button id="logoutBtn" class="btn btn-outline" style="border-color: #ff4d4d; color: #ff4d4d;">
-                    <i data-lucide="log-out"></i> Logout
+                <a href="pages/login.html" class="btn btn-primary">
+                    <i data-lucide="user"></i> Student Login
+                </a>
+                
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
                 </button>
             </div>
         </div>
     </nav>
+
 
     <!-- DASHBOARD CONTENT -->
     <main id="dashboardContent" class="section" style="display: none; padding-top: 2rem;">

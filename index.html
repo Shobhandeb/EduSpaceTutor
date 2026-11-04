@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#030712">
     <meta name="description" content="Premium Mathematics and Computer Science tutoring for Classes 6–12 at EDU SPACE.">
-    <title>PAKHIR CHOKH| Premium Mathematics & Computer Science Tutor</title>
+    <title>PAKHIR CHOKH</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,930 @@
     <!-- Core Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Advanced Video Gallery & Responsive Styles -->
+    <style>
+        /* =========================================
+           ADVANCED HERO VIDEO GALLERY (DARK FUTURISTIC)
+           ========================================= */
+        .hero-video-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            width: 100%;
+            max-width: 580px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Main Featured Video Card */
+        .video-main-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 0;
+            background: rgba(13, 19, 33, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 242, 254, 0.18);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                        0 0 30px rgba(0, 87, 255, 0.15);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .video-main-card:hover {
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 
+                        0 0 40px rgba(0, 242, 254, 0.2);
+        }
+
+    .video-player-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Maintains the 16:9 ratio */
+    background: #030712;
+    overflow: hidden;
+    border-radius: 0 0 20px 20px; /* Matches bottom corners of the card */
+}
+
+.video-player-container video,
+.video-player-container iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
+}
+
+        /* Live Video Title & Category Overlay */
+        .video-info-overlay {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .video-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            background: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 30px;
+            color: #00f2fe;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .video-badge i {
+            width: 13px;
+            height: 13px;
+        }
+
+        .video-duration-badge {
+            background: rgba(3, 7, 18, 0.75);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.3rem 0.65rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gallery Carousel Header & Controls */
+        .gallery-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.25rem;
+        }
+
+        .gallery-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        .gallery-title i {
+            color: #00f2fe;
+            width: 16px;
+            height: 16px;
+        }
+
+        .gallery-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25 ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0, 242, 254, 0.15);
+            border-color: rgba(0, 242, 254, 0.4);
+            color: #00f2fe;
+            transform: scale(1.05);
+        }
+
+        .carousel-arrow:active {
+            transform: scale(0.95);
+        }
+
+        /* Carousel Track Container */
+        .video-gallery-thumbnails-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .video-gallery-thumbnails {
+            display: flex;
+            gap: 0.85rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 0.35rem 0.2rem 0.6rem 0.2rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 242, 254, 0.4) rgba(255, 255, 255, 0.05);
+        }
+
+        .video-gallery-thumbnails::-webkit-scrollbar {
+            height: 5px;
+        }
+        .video-gallery-thumbnails::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+        }
+        .video-gallery-thumbnails::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #0057ff, #00f2fe);
+            border-radius: 10px;
+        }
+
+        /* Individual Thumbnail Card */
+        .video-thumb {
+            position: relative;
+            flex: 0 0 160px;
+            scroll-snap-align: start;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #090d16;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .video-thumb:hover {
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 
+                        0 0 15px rgba(0, 242, 254, 0.15);
+        }
+
+        .video-thumb.active {
+            border-color: #00f2fe;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+        }
+
+        .video-thumb-img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.65;
+            transition: opacity 0.3s ease, transform 0.4s ease;
+        }
+
+        .video-thumb:hover img, 
+        .video-thumb.active img {
+            opacity: 1;
+            transform: scale(1.06);
+        }
+
+        /* Play Overlay & Equalizer Animation */
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .play-overlay i {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+            transition: transform 0.2s ease;
+        }
+
+        .video-thumb:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .video-thumb:hover .play-overlay i {
+            transform: scale(1.15);
+        }
+
+        /* Playing Equalizer Indicator for Active State */
+        .playing-indicator {
+            display: none;
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            gap: 2px;
+            align-items: flex-end;
+            height: 12px;
+            padding: 3px 5px;
+            background: rgba(3, 7, 18, 0.85);
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .video-thumb.active .playing-indicator {
+            display: flex;
+        }
+
+        .eq-bar {
+            width: 2px;
+            background: #00f2fe;
+            border-radius: 1px;
+            animation: eqBounce 1s infinite ease-in-out alternate;
+        }
+
+        .eq-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+
+        @keyframes eqBounce {
+            0% { height: 20%; }
+            100% { height: 100%; }
+        }
+
+        /* Thumbnail Meta Text below image */
+        .thumb-info {
+            padding: 0.55rem 0.65rem;
+            background: rgba(13, 19, 33, 0.95);
+        }
+
+        .thumb-title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+
+        .video-thumb.active .thumb-title {
+            color: #00f2fe;
+        }
+
+        .thumb-tag {
+            font-size: 0.68rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.15rem;
+            display: block;
+        }
+
+        /* =========================================
+           MOBILE RESPONSIVENESS OVERRIDES
+           ========================================= */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero-video-wrapper {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 5rem 1rem 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.1rem;
+                line-height: 1.2;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+
+            .stat-divider {
+                display: none;
+            }
+
+            .stat-item {
+                flex: 1 1 30%;
+                min-width: 90px;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            /* Responsive Gallery Adjustments */
+            .video-thumb {
+                flex: 0 0 135px; /* Compact thumbnail size for mobile screens */
+            }
+
+            .thumb-info {
+                padding: 0.45rem 0.5rem;
+            }
+
+            .thumb-title {
+                font-size: 0.72rem;
+            }
+
+            .video-info-overlay {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+
+            .video-badge {
+                font-size: 0.68rem;
+                padding: 0.25rem 0.55rem;
+            }
+
+            .video-duration-badge {
+                font-size: 0.68rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+
+/* ============================================
+   PAKHIR CHOKH — MOBILE RESPONSIVE UPGRADE
+   Add at the END of your existing <style>
+============================================ */
+
+/* Global mobile safety */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+.page-shell {
+    width: 100%;
+    overflow: clip;
+}
+
+section,
+header,
+footer {
+    max-width: 100%;
+}
+
+/* Tablet and mobile */
+@media (max-width: 992px) {
+
+    .navbar {
+        width: 100%;
+    }
+
+    .nav-container {
+        padding: 0 1.25rem;
+        min-height: 70px;
+    }
+
+    .nav-brand {
+        font-size: 1rem;
+    }
+
+    .nav-actions {
+        gap: 0.6rem;
+    }
+
+    .nav-actions .btn {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        padding: 7rem 1.5rem 4rem;
+    }
+
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        width: 100%;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 750px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        line-height: 1.15;
+    }
+
+    .hero-description {
+        max-width: 600px;
+        margin: 1.2rem auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-video-wrapper {
+        width: 100%;
+        max-width: 680px;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section {
+        padding: 4rem 1.5rem;
+    }
+
+    .section-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .footer-container {
+        padding: 0 1.5rem;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 576px) {
+
+    /* Navigation */
+    .navbar {
+        min-height: 65px;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+        min-height: 65px;
+    }
+
+    .nav-brand {
+        font-size: 0.9rem;
+        gap: 0.4rem;
+    }
+
+    .brand-icon {
+        width: 21px;
+        height: 21px;
+    }
+
+    .nav-actions .btn {
+        padding: 0.55rem 0.7rem;
+        font-size: 0.72rem;
+        gap: 0.3rem;
+    }
+
+    .nav-actions .btn i {
+        width: 15px;
+        height: 15px;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.8rem 1rem 1rem;
+        background: rgba(3, 7, 18, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(0, 242, 254, 0.12);
+        border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+        z-index: 999;
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 0.95rem 0.75rem;
+        font-size: 0.95rem;
+        border-radius: 8px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero-container {
+        gap: 2.2rem;
+    }
+
+    .hero-content {
+        align-items: center;
+    }
+
+    .hero-content .badge {
+        font-size: 0.7rem;
+        padding: 0.45rem 0.7rem;
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+        line-height: 1.18;
+        letter-spacing: -1px;
+        word-break: normal;
+        overflow-wrap: break-word;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        padding: 0 0.15rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0.8rem;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+    }
+
+    /* Statistics */
+    .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .stat-item {
+        min-width: 0;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 1.45rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+        line-height: 1.4;
+    }
+
+    /* Video gallery */
+    .hero-video-wrapper {
+        width: 100%;
+        max-width: 100%;
+        gap: 1rem;
+    }
+
+    .video-main-card {
+        border-radius: 14px;
+    }
+
+    .video-player-container {
+        padding-top: 56.25%;
+        width: 100%;
+    }
+
+    .video-player-container video {
+        object-fit: contain;
+    }
+
+    .video-info-overlay {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+    }
+
+    .video-badge {
+        font-size: 0.62rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .video-badge i {
+        width: 11px;
+        height: 11px;
+    }
+
+    .video-duration-badge {
+        font-size: 0.62rem;
+        padding: 0.25rem 0.45rem;
+    }
+
+    .gallery-header {
+        gap: 0.5rem;
+    }
+
+    .gallery-title {
+        font-size: 0.8rem;
+    }
+
+    .carousel-arrow {
+        width: 34px;
+        height: 34px;
+    }
+
+    .video-gallery-thumbnails {
+        gap: 0.65rem;
+        padding: 0.3rem 0.1rem 0.65rem;
+    }
+
+    .video-thumb {
+        flex: 0 0 140px;
+        border-radius: 11px;
+    }
+
+    .thumb-info {
+        padding: 0.5rem;
+    }
+
+    .thumb-title {
+        font-size: 0.72rem;
+    }
+
+    .thumb-tag {
+        font-size: 0.63rem;
+    }
+
+    /* Sections */
+    .section {
+        padding: 3.5rem 1rem;
+    }
+
+    .section-container {
+        padding: 0;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.7rem, 7vw, 2.3rem);
+        line-height: 1.2;
+    }
+
+    .section-subtitle {
+        font-size: 0.85rem;
+        line-height: 1.65;
+        padding: 0 0.3rem;
+    }
+
+    /* Feature and testimonial grids */
+    .grid-3,
+    .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .feature-card,
+    .testimonial-card {
+        width: 100%;
+        padding: 1.4rem;
+    }
+
+    .feature-title {
+        font-size: 1.1rem;
+    }
+
+    .feature-text,
+    .testimonial-text {
+        font-size: 0.88rem;
+        line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 3rem 0 1rem;
+    }
+
+    .footer-container {
+        padding: 0 1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .footer-description {
+        max-width: 350px;
+        font-size: 0.85rem;
+        line-height: 1.7;
+    }
+
+    .footer-title {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-links li {
+        font-size: 0.85rem;
+        overflow-wrap: anywhere;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding: 1.2rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+
+    .nav-container {
+        padding: 0 0.65rem;
+    }
+
+    .nav-brand {
+        font-size: 0.78rem;
+    }
+
+    .nav-actions {
+        gap: 0.35rem;
+    }
+
+    .nav-actions .btn {
+        padding: 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    .mobile-menu-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .hero {
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .stat-number {
+        font-size: 1.25rem;
+    }
+
+    .video-thumb {
+        flex: 0 0 125px;
+    }
+}
+
+/* Accessibility: respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+    </style>
 </head>
 <body>
     <div class="scroll-progress" aria-hidden="true"></div>
@@ -28,19 +952,18 @@
     <nav class="navbar">
         <div class="nav-container">
             <!-- Brand Logo -->
-            <!-- Brand Logo -->
-<a href="index.html" class="nav-brand">
-    <!-- New Bird's Eye Icon (Lucide 'eye' or 'bird' if supported) -->
-    <i data-lucide="eye" class="brand-icon"></i>
-    <span class="brand-text">PAKSHIR <span class="text-glow-cyan">CHOKH</span></span>
-</a>
+            <a href="index.html" class="nav-brand">
+                <i data-lucide="eye" class="brand-icon"></i>
+                <span class="brand-text">PAKSHIR <span class="text-glow-cyan">CHOKH</span></span>
+            </a>
 
             <!-- Navigation Links -->
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
+                <a href="./index.html" class="nav-link active">Home</a>
                 <a href="pages/about.html" class="nav-link">About</a>
                 <a href="pages/courses.html" class="nav-link">Courses</a>
                 <a href="pages/contact.html" class="nav-link">Contact</a>
+                <a href="pages/notes.html" class="nav-link">Notes</a>
             </div>
 
             <!-- Login Button & Mobile Menu Toggle -->
@@ -49,7 +972,6 @@
                     <i data-lucide="user"></i> Student Login
                 </a>
                 
-                <!-- Mobile Menu Button (Hidden on Desktop) -->
                 <button class="mobile-menu-btn" aria-label="Toggle Menu">
                     <i data-lucide="menu"></i>
                 </button>
@@ -57,80 +979,448 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
+    <!-- Page Content Shell -->
     <main class="page-shell">
-        <!-- =========================================
-         HERO SECTION
-         ========================================= -->
-        <header class="hero">
-            <!-- Decorative Background Elements -->
-            <div class="hero-glow glow-1"></div>
-            <div class="hero-glow glow-2"></div>
+   <!-- =========================================
+ HEROS ECTION
+ ========================================= -->
 
-            <div class="hero-container">
-                
-                <!-- Left Side: Content -->
-                <div class="hero-content">
-                    <div class="badge" aria-label="Enrollment status">
-                        <span class="pulse-dot"></span>
-                        Accepting New Students for 2026-27
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        Master <span class="text-glow-cyan">Mathematics</span> & <br>
-                        <span class="text-glow-blue">Computer Science</span>
-                    </h1>
-                    
-                    <p class="hero-description">
-                        Premium private tutoring for Classes 6–12. Unlock your true potential with a modern curriculum, personalized attention, and futuristic learning methodologies.
-                    </p>
-                    
-                    <div class="hero-buttons">
-                        <a href="pages/contact.html" class="btn btn-primary btn-large">
-                            <i data-lucide="calendar"></i> Book Free Demo
-                        </a>
-                        <a href="pages/courses.html" class="btn btn-outline btn-large">
-                            <i data-lucide="book-open"></i> Explore Courses
-                        </a>
-                    </div>
-                    
-                    <!-- Quick Stats -->
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <h3 class="stat-number">500+</h3>
-                            <p class="stat-label">Students Taught</p>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <h3 class="stat-number">100%</h3>
-                            <p class="stat-label">Success Rate</p>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <h3 class="stat-number">5+</h3>
-                            <p class="stat-label">Years Experience</p>
-                        </div>
-                    </div>
+<!-- =========================================
+     PREMIUM HERO SECTION
+     WITH AUTOPLAY VIDEO GALLERY
+========================================= -->
+
+<header class="hero">
+
+    <!-- Decorative Background Elements -->
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+
+    <div class="hero-container">
+
+        <!-- LEFT SIDE: CONTENT -->
+        <div class="hero-content">
+
+            <div class="badge" aria-label="Enrollment status">
+                <span class="pulse-dot"></span>
+                Accepting New Students for 2026-27
+            </div>
+
+            <h1 class="hero-title">
+                Master <span class="text-glow-cyan">Mathematics</span> &
+                <br>
+                <span class="text-glow-blue">Computer Science</span>
+            </h1>
+
+            <p class="hero-description">
+                Premium private tutoring for Classes 8–12.
+                Unlock your true potential with a modern curriculum,
+                personalized attention, and futuristic learning methodologies.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="pages/contact.html" class="btn btn-primary btn-large">
+                    <i data-lucide="calendar"></i>
+                    Book Free Demo
+                </a>
+
+                <a href="pages/courses.html" class="btn btn-outline btn-large">
+                    <i data-lucide="book-open"></i>
+                    Explore Courses
+                </a>
+
+            </div>
+
+            <!-- QUICK STATS -->
+            <div class="hero-stats">
+
+                <div class="stat-item">
+                    <h3 class="stat-number">60+</h3>
+                    <p class="stat-label">Students Taught</p>
                 </div>
 
-                <!-- Right Side: Tutor Image -->
-                <div class="hero-image-wrapper">
-                    <div class="glass-panel image-card">
-                        <!-- Ensure profile1.png is placed in assets/images/ -->
-                        <img src="assets/images/image.png" alt="Professional Tutor" class="tutor-img" onerror="this.src='https://via.placeholder.com/500x600/0057ff/ffffff?text=Tutor+Portrait'">
-                        
-                        <!-- Floating Tech Badge -->
-                        <div class="floating-badge badge-math">
-                            <i data-lucide="pi"></i>
-                        </div>
-                        <div class="floating-badge badge-code">
-                            <i data-lucide="code-2"></i>
-                        </div>
-                    </div>
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <h3 class="stat-number">100%</h3>
+                    <p class="stat-label">Success Rate</p>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat-item">
+                    <h3 class="stat-number">4+</h3>
+                    <p class="stat-label">Years Experience</p>
                 </div>
 
             </div>
-        </header>
+
+        </div>
+
+
+        <!-- =====================================
+             RIGHT SIDE: VIDEO GALLERY
+        ====================================== -->
+
+        <div class="hero-video-wrapper">
+
+            <!-- MAIN VIDEO PLAYER CARD -->
+            <div class="glass-panel video-main-card">
+
+                <!-- VIDEO OVERLAY -->
+                <div class="video-info-overlay">
+
+                    <span class="video-badge" id="currentVideoBadge">
+                        <i data-lucide="sparkles"></i>
+                        Python Programming
+                    </span>
+
+                    <span class="video-duration-badge" id="currentVideoDuration">
+                        DEMO CLASS
+                    </span>
+
+                </div>
+
+                <!-- VIDEO PLAYER -->
+                <div class="video-player-container">
+
+                    <iframe
+                        id="mainVideoPlayer"
+                        src="https://www.youtube.com/embed/45CDXxeGK_s?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1"
+                        title="Demo Class Video Player"
+                        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+            </div>
+
+
+            <!-- GALLERY HEADER -->
+            <div class="gallery-header">
+
+                <div class="gallery-title">
+                    <i data-lucide="play-square"></i>
+                    Demo Class Gallery
+                </div>
+
+                <div class="gallery-controls">
+
+                    <button
+                        class="carousel-arrow"
+                        onclick="scrollGallery('left')"
+                        aria-label="Previous Videos">
+
+                        <i data-lucide="chevron-left"></i>
+
+                    </button>
+
+                    <button
+                        class="carousel-arrow"
+                        onclick="scrollGallery('right')"
+                        aria-label="Next Videos">
+
+                        <i data-lucide="chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- VIDEO THUMBNAILS -->
+            <div class="video-gallery-thumbnails-wrapper">
+
+                <div class="video-gallery-thumbnails" id="galleryContainer">
+
+
+                    <!-- =================================
+                         VIDEO 1: PYTHON
+                    ================================== -->
+
+                    <div
+                        class="video-thumb active"
+                        onclick="changeVideo(
+                            '45CDXxeGK_s',
+                            'Python Programming',
+                            this
+                        )">
+
+                        <div class="video-thumb-img-wrapper">
+
+                            <img
+                                src="https://img.youtube.com/vi/45CDXxeGK_s/hqdefault.jpg"
+                                alt="Python Programming Demo Class"
+                                loading="lazy">
+
+                            <div class="play-overlay">
+                                <i data-lucide="play-circle"></i>
+                            </div>
+
+                            <div class="playing-indicator">
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="thumb-info">
+
+                            <h4 class="thumb-title">
+                                Python Programming
+                            </h4>
+
+                            <span class="thumb-tag">
+                                Hints from 8 to 15
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         VIDEO 2: JELET MATRICES
+                    ================================== -->
+
+                    <div
+                        class="video-thumb"
+                        onclick="changeVideo(
+                            'Rc1N9FsXyVo',
+                            'JELET Mathematics',
+                            this
+                        )">
+
+                        <div class="video-thumb-img-wrapper">
+
+                            <img
+                                src="https://img.youtube.com/vi/Rc1N9FsXyVo/hqdefault.jpg"
+                                alt="JELET Matrices Demo Class"
+                                loading="lazy">
+
+                            <div class="play-overlay">
+                                <i data-lucide="play-circle"></i>
+                            </div>
+
+                            <div class="playing-indicator">
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="thumb-info">
+
+                            <h4 class="thumb-title">
+                                Matrices – Day 1
+                            </h4>
+
+                            <span class="thumb-tag">
+                                Important Tips About JELET
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     VIDEO GALLERY JAVASCRIPT
+========================================= -->
+
+<script>
+
+(function () {
+
+    const player = document.getElementById('mainVideoPlayer');
+
+    const badge = document.getElementById('currentVideoBadge');
+
+    const gallery = document.getElementById('galleryContainer');
+
+
+    // =====================================
+    // CHANGE VIDEO + AUTOPLAY
+    // =====================================
+
+    window.changeVideo = function (videoId, videoTitle, element) {
+
+        if (!player) return;
+
+        // Remove previous active thumbnail
+        document.querySelectorAll('.video-thumb').forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+
+        // Activate selected thumbnail
+        element.classList.add('active');
+
+        // Update video title
+        badge.innerHTML = `
+            <i data-lucide="sparkles"></i>
+            ${videoTitle}
+        `;
+
+        // Load selected video with autoplay
+        player.src =
+            `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1`;
+
+        // Refresh icons
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+
+        // Center selected thumbnail
+        element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
+
+    };
+
+
+    // =====================================
+    // GALLERY NAVIGATION
+    // =====================================
+
+    window.scrollGallery = function (direction) {
+
+        if (!gallery) return;
+
+        gallery.scrollBy({
+            left: direction === 'left' ? -250 : 250,
+            behavior: 'smooth'
+        });
+
+    };
+
+
+})();
+
+</script>
+
+
+<!-- =========================================
+     VIDEO GALLERY CSS
+     ADDITIONAL SAFETY STYLES
+========================================= -->
+
+<style>
+
+.video-player-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+    border-radius: inherit;
+}
+
+.video-player-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-gallery-thumbnails {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.video-gallery-thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+.video-thumb {
+    flex: 0 0 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-thumb.active {
+    border-color: #00e5ff;
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.25);
+}
+
+.video-thumb-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 16 / 9;
+}
+
+.video-thumb-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-thumb.active .playing-indicator {
+    opacity: 1;
+}
+
+.playing-indicator {
+    opacity: 0;
+    position: absolute;
+    bottom: 9px;
+    left: 10px;
+    display: flex;
+    align-items: end;
+    gap: 3px;
+    height: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.eq-bar {
+    width: 3px;
+    height: 6px;
+    background: #00e5ff;
+    border-radius: 3px;
+    animation: equalizer 0.7s infinite alternate;
+}
+
+.eq-bar:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.eq-bar:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes equalizer {
+    from { height: 4px; }
+    to { height: 15px; }
+}
+
+.video-thumb.active .play-overlay {
+    opacity: 1;
+}
+
+</style>
 
         <!-- =========================================
              TEACHING METHODOLOGY SECTION
@@ -143,7 +1433,6 @@
                 </div>
 
                 <div class="grid-3">
-                    <!-- Method Card 1 -->
                     <div class="glass-panel feature-card">
                         <div class="feature-icon cyan-icon">
                             <i data-lucide="brain-circuit"></i>
@@ -152,7 +1441,6 @@
                         <p class="feature-text">We break down complex Mathematics and Computer Science concepts to their fundamental logical roots.</p>
                     </div>
 
-                    <!-- Method Card 2 -->
                     <div class="glass-panel feature-card">
                         <div class="feature-icon blue-icon">
                             <i data-lucide="laptop"></i>
@@ -161,7 +1449,6 @@
                         <p class="feature-text">Every theory is backed by real-world coding projects or mathematical modeling.</p>
                     </div>
 
-                    <!-- Method Card 3 -->
                     <div class="glass-panel feature-card">
                         <div class="feature-icon cyan-icon">
                             <i data-lucide="line-chart"></i>
@@ -184,7 +1471,6 @@
                 </div>
 
                 <div class="grid-2">
-                    <!-- Testimonial 1 -->
                     <div class="glass-panel testimonial-card">
                         <div class="stars">
                             <i data-lucide="star" class="star-icon"></i>
@@ -203,7 +1489,6 @@
                         </div>
                     </div>
 
-                    <!-- Testimonial 2 -->
                     <div class="glass-panel testimonial-card">
                         <div class="stars">
                             <i data-lucide="star" class="star-icon"></i>
@@ -231,8 +1516,6 @@
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-grid">
-                    
-                    <!-- Brand Info -->
                     <div class="footer-col">
                         <a href="index.html" class="nav-brand">
                             <i data-lucide="hexagon" class="brand-icon"></i>
@@ -241,7 +1524,6 @@
                         <p class="footer-description">Premium private tutoring shaping the technologists and mathematicians of tomorrow.</p>
                     </div>
 
-                    <!-- Quick Links -->
                     <div class="footer-col">
                         <h4 class="footer-title">Explore</h4>
                         <ul class="footer-links">
@@ -251,7 +1533,6 @@
                         </ul>
                     </div>
 
-                    <!-- Contact Info -->
                     <div class="footer-col">
                         <h4 class="footer-title">Contact</h4>
                         <ul class="footer-links">
@@ -260,7 +1541,6 @@
                             <li><i data-lucide="map-pin" class="footer-icon"></i> Maskalaibari, West Bengal</li>
                         </ul>
                     </div>
-
                 </div>
                 
                 <div class="footer-bottom">
@@ -272,6 +1552,48 @@
 
     <!-- Core JavaScript -->
     <script src="js/main.js"></script>
+
+    <!-- Advanced Video Swapping & Gallery Controller Script -->
+    <script>
+        function changeVideo(videoSrc, posterSrc, badgeText, durationText, element) {
+            const videoPlayer = document.getElementById('mainVideoPlayer');
+            const badgeEl = document.getElementById('currentVideoBadge');
+            const durationEl = document.getElementById('currentVideoDuration');
+            
+            // 1. Update Video Player Source & Poster
+            videoPlayer.src = videoSrc;
+            videoPlayer.poster = posterSrc;
+            videoPlayer.play().catch(e => console.log("Autoplay waiting for user interaction"));
+
+            // 2. Update Dynamic Overlay Badges
+            if(badgeEl) badgeEl.innerHTML = `<i data-lucide="sparkles"></i> ${badgeText}`;
+            if(durationEl) durationEl.textContent = durationText;
+            lucide.createIcons();
+
+            // 3. Update Thumbnail Active States
+            document.querySelectorAll('.video-thumb').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            // 4. Smoothly Scroll Active Thumbnail into View
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
+
+        function scrollGallery(direction) {
+            const gallery = document.getElementById('galleryContainer');
+            const scrollAmount = 200;
+            if (direction === 'left') {
+                gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+    </script>
 
     <!-- UI Animation and Interactivity Script -->
     <script>
